@@ -1,0 +1,50 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderManagement.Web.Database", "OrderManagement.Web.Database\OrderManagement.Web.Database.csproj", "{096755A9-237E-4A04-8BDE-663E5FAB0248}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderManagement.Web.BLL", "OrderManagement.Web.BLL\OrderManagement.Web.BLL.csproj", "{1322BD72-277D-46ED-9BF2-746BF91A306F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderManagement.Web.DLL", "OrderManagement.Web.DLL\OrderManagement.Web.DLL.csproj", "{BF937E97-0CE2-4CA7-8956-66916130FDBA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderManagement.Web.Domain", "OrderManagement.Web.Domain\OrderManagement.Web.Domain.csproj", "{609F3DF0-17BD-45DE-A62A-94949F33133F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderManagement.Web.UI", "OrderManagement.Web.UI\OrderManagement.Web.UI.csproj", "{17F09073-ED48-45BF-991E-5BBB2152001E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderManagement.Web.Services", "OrderManagement.Web.Services\OrderManagement.Web.Services.csproj", "{4FAAB45E-B0A1-4521-9615-1E3781A21C95}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{096755A9-237E-4A04-8BDE-663E5FAB0248}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{096755A9-237E-4A04-8BDE-663E5FAB0248}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{096755A9-237E-4A04-8BDE-663E5FAB0248}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{096755A9-237E-4A04-8BDE-663E5FAB0248}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1322BD72-277D-46ED-9BF2-746BF91A306F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1322BD72-277D-46ED-9BF2-746BF91A306F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1322BD72-277D-46ED-9BF2-746BF91A306F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1322BD72-277D-46ED-9BF2-746BF91A306F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF937E97-0CE2-4CA7-8956-66916130FDBA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF937E97-0CE2-4CA7-8956-66916130FDBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF937E97-0CE2-4CA7-8956-66916130FDBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF937E97-0CE2-4CA7-8956-66916130FDBA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{609F3DF0-17BD-45DE-A62A-94949F33133F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{609F3DF0-17BD-45DE-A62A-94949F33133F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{609F3DF0-17BD-45DE-A62A-94949F33133F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{609F3DF0-17BD-45DE-A62A-94949F33133F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{17F09073-ED48-45BF-991E-5BBB2152001E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17F09073-ED48-45BF-991E-5BBB2152001E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17F09073-ED48-45BF-991E-5BBB2152001E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17F09073-ED48-45BF-991E-5BBB2152001E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4FAAB45E-B0A1-4521-9615-1E3781A21C95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4FAAB45E-B0A1-4521-9615-1E3781A21C95}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4FAAB45E-B0A1-4521-9615-1E3781A21C95}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4FAAB45E-B0A1-4521-9615-1E3781A21C95}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
