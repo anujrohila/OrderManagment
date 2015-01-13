@@ -1,0 +1,10 @@
+﻿@using OrderManagement.Web.Domain;
+@model PageHeaderModel
+@{if (Model != null)
+  {
+    <title>@Model.Title</title>
+    <meta name="description" content="@Model.MetaDescription" />
+    <meta name="keywords" content="@Model.MetaKeyword" />
+    <link rel="canonical" href="@Model.CannonicalLink" />
+  }    
+}

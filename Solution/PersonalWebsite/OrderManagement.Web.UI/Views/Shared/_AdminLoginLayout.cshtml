@@ -1,0 +1,141 @@
+﻿@using OrderManagement.Web.UI
+@using OrderManagement.Web.Domain.Resources
+@using Telerik.Web.Mvc.UI;
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    @RenderSection("Head", false)
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='icon' href="@Url.Content("~/Contents/Images/Shared/favicon.ico")" type='image/x-icon'>
+    <link rel='shortcut icon' href="@Url.Content("~/Contents/Images/Shared/favicon.ico")" type='image/x-icon'>
+
+    <style type="text/css">
+        body {
+            padding-bottom: 40px;
+        }
+
+        .sidebar-nav {
+            padding: 9px 0;
+        }
+    </style>
+
+    @Html.Style("~/Content/Styles/Shared/Common.css")
+    @Html.Style("~/css/bootstrap-cerulean.css")
+    @Html.Style("~/css/bootstrap-responsive.css")
+    @Html.Style("~/css/charisma-app.css")
+    @Html.Style("~/css/jquery-ui-1.8.21.custom.css")
+    @Html.Style("~/css/fullcalendar.css")
+    @Html.Style("~/css/fullcalendar.print.css")
+    @*<link href='css/fullcalendar.print.css' rel='stylesheet' media='print'>*@
+    @Html.Style("~/css/chosen.css")
+    @Html.Style("~/css/uniform.default.css")
+    @Html.Style("~/css/colorbox.css")
+    @Html.Style("~/css/jquery.cleditor.css")
+    @Html.Style("~/css/jquery.noty.css")
+    @Html.Style("~/css/noty_theme_default.css")
+    @Html.Style("~/css/elfinder.min.css")
+    @Html.Style("~/css/elfinder.theme.css")
+    @Html.Style("~/css/jquery.iphone.toggle.css")
+    @Html.Style("~/css/opa-icons.css")
+    @Html.Style("~/css/uploadify.css")
+
+
+
+
+
+
+</head>
+<body>
+    <div id="content">
+        <!-- content starts -->
+        @RenderSection("featured", required: false)
+        @RenderBody()
+    </div>
+    
+    <script type="text/javascript" src="~/Content/Scripts/Shared/jquery-1.8.1.min.js"></script>
+    <script type="text/javascript" src="~/Content/Scripts/Shared/jquery.validate.js"></script>
+    <script type="text/javascript" src="~/Content/Scripts/Shared/jquery.validate.unobtrusive.js"></script>
+   
+    <!-- external javascript
+	================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+
+    <!-- jQuery -->
+    @Html.Script("~/js/jquery-1.7.2.min.js")
+    <!-- jQuery UI -->
+    @Html.Script("~/js/jquery-ui-1.8.21.custom.min.js")
+    <!-- transition / effect library -->
+    @Html.Script("~/js/bootstrap-transition.js")
+    <!-- alert enhancer library -->
+    @Html.Script("~/js/bootstrap-alert.js")
+    <!-- modal / dialog library -->
+    @Html.Script("~/js/bootstrap-modal.js")
+    <!-- custom dropdown library -->
+    @Html.Script("~/js/bootstrap-dropdown.js")
+    <!-- scrolspy library -->
+    @Html.Script("~/js/bootstrap-scrollspy.js")
+    <!-- library for creating tabs -->
+    @Html.Script("~/js/bootstrap-tab.js")
+    <!-- library for advanced tooltip -->
+    @Html.Script("~/js/bootstrap-tooltip.js")
+    <!-- popover effect library -->
+    @Html.Script("~/js/bootstrap-popover.js")
+    <!-- button enhancer library -->
+    @Html.Script("~/js/bootstrap-button.js")
+    <!-- accordion library (optional, not used in demo) -->
+    @Html.Script("~/js/bootstrap-collapse.js")
+    <!-- carousel slideshow library (optional, not used in demo) -->
+    @Html.Script("~/js/bootstrap-carousel.js")
+    <!-- autocomplete library -->
+    @Html.Script("~/js/bootstrap-typeahead.js")
+    <!-- tour library -->
+    @Html.Script("~/js/bootstrap-tour.js")
+    <!-- library for cookie management -->
+    @Html.Script("~/js/jquery.cookie.js")
+    <!-- calander plugin -->
+    @Html.Script("~/js/fullcalendar.min.js")
+    <!-- data table plugin -->
+    @Html.Script("~/js/jquery.dataTables.min.js")
+
+    <!-- chart libraries start -->
+    @Html.Script("~/js/excanvas.js")
+    @Html.Script("~/js/jquery.flot.min.js")
+    @Html.Script("~/js/jquery.flot.pie.min.js")
+    @Html.Script("~/js/jquery.flot.stack.js")
+    @Html.Script("~/js/jquery.flot.resize.min.js")
+    <!-- chart libraries end -->
+
+    <!-- select or dropdown enhancer -->
+    @Html.Script("~/js/jquery.chosen.min.js")
+    <!-- checkbox, radio, and file input styler -->
+    @Html.Script("~/js/jquery.uniform.min.js")
+    <!-- plugin for gallery image view -->
+    @Html.Script("~/js/jquery.colorbox.min.js")
+    <!-- rich text editor library -->
+    @Html.Script("~/js/jquery.cleditor.min.js")
+    <!-- notification plugin -->
+    @Html.Script("~/js/jquery.noty.js")
+    <!-- file manager library -->
+    @Html.Script("~/js/jquery.elfinder.min.js")
+    <!-- star rating plugin -->
+    @Html.Script("~/js/jquery.raty.min.js")
+    <!-- for iOS style toggle switch -->
+    @Html.Script("~/js/jquery.iphone.toggle.js")
+    <!-- autogrowing textarea plugin -->
+    @Html.Script("~/js/jquery.autogrow-textarea.js")
+    <!-- multiple file upload plugin -->
+    @Html.Script("~/js/jquery.uploadify-3.1.min.js")
+    <!-- history.js for cross-browser state change on ajax -->
+    @Html.Script("~/js/jquery.history.js")
+    <!-- application script for Charisma demo -->
+    @Html.Script("~/js/charisma.js")
+
+    <script src="~/Base/OrderManagementResource" type="text/javascript"></script>
+
+
+</body>
+</html>
+

@@ -1,0 +1,469 @@
+﻿@using Telerik.Web.Mvc.UI;
+@using OrderManagement.Web.UI;
+@model HomePageModel
+@{
+    ViewBag.Title = "Home Page";
+}
+
+
+<div class="row" style="padding-bottom: 200px">
+    <div class="row" style="padding-top: 20px">
+        @(Html.Telerik().Grid<Student>()
+            .Name("StudentGrid")
+            .DataKeys(datakKey => datakKey.Add(key => key.RollNo))
+            .DataBinding(dataBinding => dataBinding.Ajax().Select("ListAllStudentAjax", "Home"))
+            .Columns(columns =>
+            {
+                columns.Bound(column => column.RollNo).Title("RollNo");
+                columns.Bound(column => column.Name).Title("Name");
+                columns.Bound(column => column.Mark1).Title("Mark1");
+                columns.Bound(column => column.Mark2).Title("Mark2");
+                columns.Bound(column => column.Result).Title("Totals");
+
+            })
+            .Sortable()
+            .Filterable()
+            .Pageable(paging => paging.PageSize(5).Style(GridPagerStyles.NextPreviousAndNumeric).Position(GridPagerPosition.Bottom))
+        )
+    </div>
+    <div class="row" style="padding-top: 30px">
+        <div class="col-xs-3">
+            <div class="row" style="padding: 5px">
+                Date time pciker
+            </div>
+            <div class="row" style="padding: 5px">
+                Combobox
+            </div>
+            <div class="row" style="padding: 5px">
+                Dropdownbox
+            </div>
+        </div>
+        <div class="col-xs-4">
+            <div class="row" style="padding: 5px">
+                @(Html.Telerik().DatePicker()
+                    .Name("maxDate")
+                    .Value((DateTime)DateTime.Now)
+            )
+            </div>
+
+            <div class="row" style="padding: 5px">
+                @(Html.Telerik().ComboBox()
+                        .Name("ComboBox")
+                        .BindTo(new SelectList(Model.Students, "RollNo", "Name"))
+                )
+            </div>
+            <div class="row" style="padding: 5px">
+                @(Html.Telerik().DropDownList()
+                    .Name("DropDownList")
+                    .BindTo(new SelectList(Model.Students, "RollNo", "Name"))
+                 )
+            </div>
+
+        </div>
+    </div>
+    <div class="row">
+        @{ Html.Telerik().Menu()
+        .Name("Menu")
+        .Items(menu =>
+        {
+            menu.Add()
+                .Text("ASP.NET MVC")
+                .Items(item =>
+                {
+                    item.Add().Text("Grid");
+                    item.Add().Text("Menu");
+                    item.Add().Text("PanelBar");
+                    item.Add().Text("TabStrip");
+                });
+            menu.Add()
+                .Text("Silverlight")
+                .Items(item =>
+                {
+                    item.Add().Text("GridView");
+                    item.Add().Text("Scheduler");
+                    item.Add().Text("Docking");
+                    item.Add().Text("Chart");
+                    item.Add().Text("... and 28 more!").Url("http://www.telerik.com/products/silverlight.aspx");
+                });
+            menu.Add()
+                .Text("ASP.NET AJAX")
+                .Items(item =>
+                {
+                    item.Add().Text("Grid");
+                    item.Add().Text("Editor");
+                    item.Add().Text("Scheduler");
+                    item.Add().Text("... and 28 more!").Url("http://www.telerik.com/products/aspnet-ajax.aspx");
+                });
+            menu.Add()
+                .Text("OpenAccess ORM")
+                .Content(@<text>
+            <img src="@Url.Content("~/Content/Common/orm-comparison.png") " alt="Telerik OpenAccess" />
+            <a id="buy" href="http://www.telerik.com/purchase/individual/orm.aspx">Telerik OpenAccess ORM
+            </a>
+            <a id="express" href="http://www.telerik.com/community/license-agreement.aspx?pId=639">Telerik OpenAccess ORM Express
+            </a>
+            </text>);
+            menu.Add()
+                .Text("Reporting");
+            menu.Add()
+                .Text("Sitefinity ASP.NET CMS");
+            menu.Add()
+                .HtmlAttributes(new { style = "border-right: 0;" })
+                .Text("Other products")
+                .Items(item =>
+                {
+                    item.Add().Text("Web Testing Tools");
+                    item.Add().Text("WinForms UI Controls");
+                    item.Add().Text("WPF UI Controls");
+                });
+        })
+        .Render();
+        }
+    </div>
+    <div class="row" style="padding: 10px">
+        @(Html.Telerik().NumericTextBox()
+            .Name("NumericTextBox")
+            .Spinners(true)
+            .MinValue(0)
+            .MaxValue(10000000)
+         )
+
+    </div>
+    <div class="row" style="padding: 10px">
+        @{ Html.Telerik().PanelBar()
+        .Name("PanelBar")
+        .HtmlAttributes(new { style = "width: 300px; float: left; margin-bottom: 30px;" })
+        .SelectedIndex(0)
+        .Items(item =>
+        {
+            item.Add()
+                .Text("Mail")
+                .Items(subItem =>
+                {
+                    subItem.Add()
+                            .Text("Personal Folders");
+                    subItem.Add()
+                            .Text("Deleted Items");
+                    subItem.Add()
+                            .Text("Inbox");
+                    subItem.Add()
+                            .Text("My Mail");
+                    subItem.Add()
+                            .Text("Sent Items");
+                    subItem.Add()
+                            .Text("Outbox");
+                    subItem.Add()
+                            .Text("Search Folders");
+                });
+            item.Add()
+                .Text("Contacts")
+                .Items((subItem) =>
+                {
+                    subItem.Add()
+                            .Text("My Contacts");
+                    subItem.Add()
+                            .Text("Address Cards");
+                    subItem.Add()
+                            .Text("Phone List");
+                    subItem.Add()
+                            .Text("Shared Contacts");
+                });
+            item.Add()
+                .Text("Tasks")
+                .Items((subItem) =>
+                {
+                    subItem.Add()
+                            .Text("My Tasks");
+                    subItem.Add()
+                            .Text("Shared Tasks");
+                    subItem.Add()
+                            .Text("Active Tasks");
+                    subItem.Add()
+                            .Text("Completed Tasks");
+                });
+            item.Add()
+                .Text("Notes")
+                .Items((subItem) =>
+                {
+                    subItem.Add()
+                            .Text("My Notes");
+                    subItem.Add()
+                            .Text("Notes List");
+                    subItem.Add()
+                            .Text("Shared Notes");
+                    subItem.Add()
+                            .Text("Archive");
+                });
+            item.Add()
+                .Text("Folders List")
+                .Items((subItem) =>
+                {
+                    subItem.Add()
+                            .Text("My Client.Net");
+                    subItem.Add()
+                            .Text("My Profile");
+                    subItem.Add()
+                            .Text("My Support Tickets");
+                    subItem.Add()
+                            .Text("My Licenses");
+                });
+        })
+        .Render(); 
+        }
+
+
+    </div>
+    <div class="row" style="padding: 10px">
+        <div class="slider-container">
+            @(Html.Telerik().Slider<double>()
+                  .Name("Slider")
+                  .Min(0)
+                  .Max(100)
+                  .SmallStep(1)
+                  .LargeStep(5)
+                  .ShowButtons(true)
+                  .Value(25)
+             )
+        </div>
+
+    </div>
+    <div class="row" style="padding: 10px">
+
+
+        @{ Html.Telerik().TabStrip()
+        .Name("TabStrip")
+        .Items(tabstrip =>
+        {
+            tabstrip.Add()
+                .Text("ASP.NET MVC")
+                .Content(@<text>
+            <ul>
+                <li>Pure ASP.NET MVC components</li>
+                <li>Completely Open Source</li>
+                <li>Exceptional Performance</li>
+                <li>Based on jQuery</li>
+                <li>Search Engine Optimized</li>
+                <li>Cross-browser support</li>
+            </ul>
+            </text>);
+            tabstrip.Add()
+                .Text("Silverlight")
+                .Content(@<text>
+            <ul>
+                <li>Built on Silverlight 3</li>
+                <li>RIA services support</li>
+                <li>Validation support</li>
+                <li>Out of browser support</li>
+                <li>The first commercial 3D chart</li>
+                <li>Free testing framework</li>
+            </ul>
+            </text>);
+            tabstrip.Add()
+                .Text("ASP.NET AJAX")
+                .Content(@<text>
+            <ul>
+                <li>Built on top of Microsoft ASP.NET AJAX framework</li>
+                <li>Rich client-side capabilities; nearly identical client-side and server-side APIs</li>
+                <li>.NET 3.5 built-in support for LINQ, EntityDataSource, ADO.NET DataServices, WCF, etc</li>
+                <li>Performance optimization helper controls and HTTP compression</li>
+                <li>SharePoint and DotNetNuke Integration; ASP.NET MVC-ready</li>
+                <li>Wide cross-browser compatible and XHTML compliant</li>
+            </ul>
+            </text>);
+            tabstrip.Add()
+                .Text("OpenAccess ORM")
+                .Content(@<text>
+            <ul>
+                <li>Model First and Schema First approaches</li>
+                <li>Stored Procedures for Multiple Databases</li>
+                <li>Views for Multiple Databases</li>
+                <li>Generic Metadata Access and artificial fields API in the runtime</li>
+                <li>Support for Ado.Net Data Services and WCF</li>
+                <li>Support for LINQ, OQL, and SQL Languages</li>
+            </ul>
+            </text>);
+            tabstrip.Add()
+                .Text("Reporting")
+                .Content(@<text>
+            <ul>
+                <li>Excellent data presentation and analysis: Crosstabs, Charts, Tables, Lists</li>
+                <li>SubReports, Barcodes, Images, Shapes, and more</li>
+                <li>Revolutionary WYSIWYG design surface in Visual Studio</li>
+                <li>Easy conditional formatting, sorting, filtering, grouping</li>
+                <li>Powerful styling, data binging and data processing models</li>
+                <li>Significantly reduced development time through wizards and builders</li>
+            </ul>
+            </text>);
+            tabstrip.Add()
+                .Text("Sitefinity ASP.NET CMS")
+                .Content(@<text>
+            <ul>
+                <li>Multi-lingual Content Integration</li>
+                <li>Workflow Engine</li>
+                <li>Document versioning</li>
+                <li>Permissions</li>
+                <li>Interface Localization</li>
+                <li>Wide cross-browser compatible and XHTML compliant</li>
+            </ul>
+            </text>);
+        })
+        .SelectedIndex(0)
+        .Render();
+        }
+
+
+    </div>
+    <div class="row" style="padding: 10px">
+        @(Html.Telerik().TreeView()
+                .Name("TreeView")
+                .Items(item =>
+                {
+                    item.Add()
+                        .Text("Mail")
+                        .Items(subItem =>
+                        {
+                            subItem.Add()
+                                    .Text("Personal Folders");
+                            subItem.Add()
+                                    .Text("Deleted Items");
+                            subItem.Add()
+                                    .Text("Inbox");
+                            subItem.Add()
+                                    .Text("My Mail");
+                            subItem.Add()
+                                    .Text("Sent Items");
+                            subItem.Add()
+                                    .Text("Outbox");
+                            subItem.Add()
+                                    .Text("Search Folders");
+                        });
+                    item.Add()
+                        .Text("Contacts")
+                        .Items((subItem) =>
+                        {
+                            subItem.Add()
+                                    .Text("My Contacts");
+                            subItem.Add()
+                                    .Text("Address Cards");
+                            subItem.Add()
+                                    .Text("Phone List");
+                            subItem.Add()
+                                    .Text("Shared Contacts");
+                        });
+                    item.Add()
+                        .Text("Tasks")
+                        .Items((subItem) =>
+                        {
+                            subItem.Add()
+                                    .Text("My Tasks");
+                            subItem.Add()
+                                    .Text("Shared Tasks");
+                            subItem.Add()
+                                    .Text("Active Tasks");
+                            subItem.Add()
+                                    .Text("Completed Tasks");
+                        });
+                    item.Add()
+                        .Text("Notes")
+                        .Items((subItem) =>
+                        {
+                            subItem.Add()
+                                    .Text("My Notes");
+                            subItem.Add()
+                                    .Text("Notes List");
+                            subItem.Add()
+                                    .Text("Shared Notes");
+                            subItem.Add()
+                                    .Text("Archive");
+                        });
+                    item.Add()
+                        .Text("Folders List")
+                        .Items((subItem) =>
+                        {
+                            subItem.Add()
+                                    .Text("My Client.Net");
+                            subItem.Add()
+                                    .Text("My Profile");
+                            subItem.Add()
+                                    .Text("My Support Tickets");
+                            subItem.Add()
+                                    .Text("My Licenses");
+                        });
+                })
+        )
+
+    </div>
+
+
+    <div class="row" style="padding: 10px">
+        <button class="t-button t-state-default" onclick="OnWindowsOpenButtonClick()">Open window...</button>
+
+        @{  Html.Telerik().Window()
+        .Name("Window")
+        .Title("Submit feedback")
+        .Content(@<text>
+            @using (Html.BeginForm("popupform", "window", FormMethod.Post, new { id = "feedback-form" }))
+            {
+
+<div class="row" style="padding: 10px">
+        <p class="note">This is just an example, sent data will <strong>not</strong> be saved.</p>
+    </div>
+<div class="row" style="padding: 10px">
+        <div class="col-xs-3">
+            @Html.Label("Name")
+                </div>
+        <div class="col-xs-9">
+            @Html.TextBox("txtName")
+                </div>
+    </div>
+<div class="row" style="padding: 10px">
+        <div class="col-xs-3">
+            @Html.Label("Email")
+                </div>
+        <div class="col-xs-9">
+            @Html.TextBox("txtEmail")
+                </div>
+    </div>
+<div class="row" style="padding: 10px">
+        <div class="col-xs-3">
+            @Html.Label("Editor")
+                </div>
+        <div class="col-xs-9">
+            @(Html.Telerik().Editor().Name("editor")
+                        .Encode(false)
+                        .Tools(tools => tools
+                            .Clear()
+                            .Bold().Italic().Separator()
+                            .InsertOrderedList().InsertUnorderedList().Separator()
+                            .Indent().Outdent().Separator()
+                            .CreateLink()
+                        ))
+                </div>
+    </div>
+<div class="row" style="padding: 10px">
+        <div class="form-actions">
+            <button type="submit" class="t-button t-state-default">Submit feedback!</button>
+        </div>
+    </div>
+
+
+
+            }
+            </text>)
+        .Width(700)
+        .Height(500)
+        .Draggable(true)
+        .Modal(true)
+        .Visible(false)
+        .Render();
+        }
+
+
+    </div>
+</div>
+
+<script type="text/javascript">
+    function OnWindowsOpenButtonClick() {
+        $('#Window').data('tWindow').center().open();
+    }
+</script>
