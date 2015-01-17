@@ -44,6 +44,8 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -382,6 +384,30 @@
     <Compile Include="Helpers\CustomValidations.cs" />
     <Compile Include="Models\Admin\AdminCategoryModel.cs" />
     <Compile Include="Models\Admin\LoginModel.cs" />
+    <Compile Include="Models\Model11.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model11.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model11.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model11.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model11.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model11.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_AdminLogin.cs">
+      <DependentUpon>Model11.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_Category.cs">
+      <DependentUpon>Model11.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_Tags.cs">
+      <DependentUpon>Model11.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\TelerikExample\HomePageModel.cs" />
     <Compile Include="Models\TelerikExample\Student.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -769,6 +795,23 @@
     <Content Include="Content\assets\fonts\open-sans-fontfacekit\OpenSans-SemiboldItalic-webfont.ttf" />
     <Content Include="Content\assets\fonts\open-sans-fontfacekit\OpenSans-SemiboldItalic-webfont.woff" />
     <Content Include="Content\assets\js\vendor\jquery-1.9.1.min.js_notused" />
+    <EntityDeploy Include="Models\Model11.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model11.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Model11.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model11.edmx</DependentUpon>
+      <LastGenOutput>Model11.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Model11.edmx.diagram">
+      <DependentUpon>Model11.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\Model11.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model11.edmx</DependentUpon>
+      <LastGenOutput>Model11.cs</LastGenOutput>
+    </Content>
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="img\ajax-loaders\ajax-loader-1.gif" />
     <Content Include="img\ajax-loaders\ajax-loader-2.gif" />
@@ -1006,7 +1049,9 @@
     <Content Include="Scripts\knockout-2.2.0.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="SolutionReferences\Microsoft.VisualStudio.QualityTools.HostAdapters.ASPNETAdapter.dll" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -1283,6 +1328,9 @@
       <Project>{609f3df0-17bd-45de-a62a-94949f33133f}</Project>
       <Name>OrderManagement.Web.Domain</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
