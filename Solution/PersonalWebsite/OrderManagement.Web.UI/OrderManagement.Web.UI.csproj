@@ -384,30 +384,6 @@
     <Compile Include="Helpers\CustomValidations.cs" />
     <Compile Include="Models\Admin\AdminCategoryModel.cs" />
     <Compile Include="Models\Admin\LoginModel.cs" />
-    <Compile Include="Models\Model11.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model11.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Model11.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model11.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Model11.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model11.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\tbl_AdminLogin.cs">
-      <DependentUpon>Model11.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\tbl_Category.cs">
-      <DependentUpon>Model11.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\tbl_Tags.cs">
-      <DependentUpon>Model11.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\TelerikExample\HomePageModel.cs" />
     <Compile Include="Models\TelerikExample\Student.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -795,23 +771,6 @@
     <Content Include="Content\assets\fonts\open-sans-fontfacekit\OpenSans-SemiboldItalic-webfont.ttf" />
     <Content Include="Content\assets\fonts\open-sans-fontfacekit\OpenSans-SemiboldItalic-webfont.woff" />
     <Content Include="Content\assets\js\vendor\jquery-1.9.1.min.js_notused" />
-    <EntityDeploy Include="Models\Model11.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model11.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\Model11.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model11.edmx</DependentUpon>
-      <LastGenOutput>Model11.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\Model11.edmx.diagram">
-      <DependentUpon>Model11.edmx</DependentUpon>
-    </Content>
-    <Content Include="Models\Model11.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model11.edmx</DependentUpon>
-      <LastGenOutput>Model11.cs</LastGenOutput>
-    </Content>
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="img\ajax-loaders\ajax-loader-1.gif" />
     <Content Include="img\ajax-loaders\ajax-loader-2.gif" />
