@@ -23,7 +23,7 @@ namespace OrderManagement.Web.BLL
         {
             try
             {
-                //LogGenerator.Info(string.Format("GetAdminLoginDetail-{0}", tbl_AdminLogin_DTO));
+                LogGenerator.Info(string.Format("GetAdminLoginDetail-{0}", tblAdminLoginDTO));
                 var user = ServiceReference.AdminServiceClient.GetAdminLoginDetail(tblAdminLoginDTO);
                 if (user.Success)
                 {
