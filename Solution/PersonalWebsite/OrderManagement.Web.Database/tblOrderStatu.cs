@@ -12,13 +12,16 @@ namespace OrderManagement.Web.Database
     using System;
     using System.Collections.Generic;
     
-    public partial class tbl_Category
+    public partial class tblOrderStatu
     {
-        public int CategoryId { get; set; }
-        public string CatgeoryName { get; set; }
-        public string AliasName { get; set; }
-        public string Description { get; set; }
-        public Nullable<System.DateTime> CreationDateTime { get; set; }
-        public Nullable<bool> IsActive { get; set; }
+        public tblOrderStatu()
+        {
+            this.tblOrders = new HashSet<tblOrder>();
+        }
+    
+        public int StatusId { get; set; }
+        public string StatusName { get; set; }
+    
+        public virtual ICollection<tblOrder> tblOrders { get; set; }
     }
 }

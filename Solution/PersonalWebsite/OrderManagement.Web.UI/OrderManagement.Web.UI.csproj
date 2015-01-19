@@ -372,7 +372,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\Admin\AdminAccountController.cs" />
-    <Compile Include="Controllers\Admin\AdminCategoryController.cs" />
     <Compile Include="Controllers\Admin\AdminHomeController.cs" />
     <Compile Include="Controllers\ApplicationBase\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -382,7 +381,6 @@
     </Compile>
     <Compile Include="Helpers\ContentFactory.cs" />
     <Compile Include="Helpers\CustomValidations.cs" />
-    <Compile Include="Models\Admin\AdminCategoryModel.cs" />
     <Compile Include="Models\Admin\LoginModel.cs" />
     <Compile Include="Models\TelerikExample\HomePageModel.cs" />
     <Compile Include="Models\TelerikExample\Student.cs" />

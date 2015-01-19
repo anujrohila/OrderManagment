@@ -43,17 +43,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assemblers\tbl_Tags_Assembler.cs" />
-    <Compile Include="Assemblers\tbl_Category_Assembler.cs" />
-    <Compile Include="Assemblers\tbl_AdminLogin_Assembler.cs" />
+    <Compile Include="Assemblers\tblAdminLoginAssembler.cs" />
+    <Compile Include="Assemblers\tblCityAssembler.cs" />
+    <Compile Include="Assemblers\tblEmployeeAssembler.cs" />
+    <Compile Include="Assemblers\tblFavouriteOrganizationAssembler.cs" />
+    <Compile Include="Assemblers\tblOrderAssembler.cs" />
+    <Compile Include="Assemblers\tblOrderItemAssembler.cs" />
+    <Compile Include="Assemblers\tblOrderStatuAssembler.cs" />
+    <Compile Include="Assemblers\tblOrganizationAssembler.cs" />
+    <Compile Include="Assemblers\tblPaymentAssembler.cs" />
     <Compile Include="Common\CommonModel.cs" />
     <Compile Include="Common\ARohilaApplication.cs" />
     <Compile Include="Common\PageHeaderModel.cs" />
     <Compile Include="Common\Enums.cs" />
     <Compile Include="Common\ServiceResult.cs" />
-    <Compile Include="DTO\tbl_Tags_DTO.cs" />
-    <Compile Include="DTO\tbl_Category_DTO.cs" />
-    <Compile Include="DTO\tbl_AdminLogin_DTO.cs" />
+    <Compile Include="DTO\tblAdminLoginDTO.cs" />
+    <Compile Include="DTO\tblCityDTO.cs" />
+    <Compile Include="DTO\tblEmployeeDTO.cs" />
+    <Compile Include="DTO\tblFavouriteOrganizationDTO.cs" />
+    <Compile Include="DTO\tblOrderDTO.cs" />
+    <Compile Include="DTO\tblOrderItemDTO.cs" />
+    <Compile Include="DTO\tblOrderStatuDTO.cs" />
+    <Compile Include="DTO\tblOrganizationDTO.cs" />
+    <Compile Include="DTO\tblPaymentDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\OrderManagementResource.Designer.cs">
       <AutoGen>True</AutoGen>

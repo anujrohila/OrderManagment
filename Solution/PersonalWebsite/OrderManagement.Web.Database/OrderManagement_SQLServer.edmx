@@ -4,118 +4,557 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="OrderManagementDatabaseModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="OrderManagementDatabaseModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityContainer Name="OrderManagementDatabaseModelStoreContainer">
-          <EntitySet Name="tbl_AdminLogin" EntityType="OrderManagementDatabaseModel.Store.tbl_AdminLogin" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="tbl_Category" EntityType="OrderManagementDatabaseModel.Store.tbl_Category" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="tbl_Tags" EntityType="OrderManagementDatabaseModel.Store.tbl_Tags" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblAdminLogin" EntityType="OrderManagementDatabaseModel.Store.tblAdminLogin" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblCity" EntityType="OrderManagementDatabaseModel.Store.tblCity" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblEmployee" EntityType="OrderManagementDatabaseModel.Store.tblEmployee" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblFavouriteOrganization" EntityType="OrderManagementDatabaseModel.Store.tblFavouriteOrganization" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblOrder" EntityType="OrderManagementDatabaseModel.Store.tblOrder" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblOrderItems" EntityType="OrderManagementDatabaseModel.Store.tblOrderItems" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblOrderStatus" EntityType="OrderManagementDatabaseModel.Store.tblOrderStatus" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblOrganization" EntityType="OrderManagementDatabaseModel.Store.tblOrganization" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblPayment" EntityType="OrderManagementDatabaseModel.Store.tblPayment" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_tblEmployee_tblEmployee" Association="OrderManagementDatabaseModel.Store.FK_tblEmployee_tblEmployee">
+            <End Role="tblOrganization" EntitySet="tblOrganization" />
+            <End Role="tblEmployee" EntitySet="tblEmployee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblOrder_tblOrderStatus" Association="OrderManagementDatabaseModel.Store.FK_tblOrder_tblOrderStatus">
+            <End Role="tblOrderStatus" EntitySet="tblOrderStatus" />
+            <End Role="tblOrder" EntitySet="tblOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblOrderItems_tblOrder" Association="OrderManagementDatabaseModel.Store.FK_tblOrderItems_tblOrder">
+            <End Role="tblOrder" EntitySet="tblOrder" />
+            <End Role="tblOrderItems" EntitySet="tblOrderItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblOrganization_tblCity" Association="OrderManagementDatabaseModel.Store.FK_tblOrganization_tblCity">
+            <End Role="tblCity" EntitySet="tblCity" />
+            <End Role="tblOrganization" EntitySet="tblOrganization" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblPayment_tblOrganization" Association="OrderManagementDatabaseModel.Store.FK_tblPayment_tblOrganization">
+            <End Role="tblOrganization" EntitySet="tblOrganization" />
+            <End Role="tblPayment" EntitySet="tblPayment" />
+          </AssociationSet>
         </EntityContainer>
-        <EntityType Name="tbl_AdminLogin">
+        <EntityType Name="tblAdminLogin">
           <Key>
-            <PropertyRef Name="AdminLoginId" />
+            <PropertyRef Name="AdminId" />
           </Key>
-          <Property Name="AdminLoginId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="AdminId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="FirstName" Type="varchar" MaxLength="50" />
           <Property Name="LastName" Type="varchar" MaxLength="50" />
           <Property Name="UserName" Type="varchar" MaxLength="50" />
           <Property Name="Password" Type="varchar" MaxLength="256" />
           <Property Name="RegisterDate" Type="datetime" />
-          <Property Name="IsActive" Type="tinyint" />
-        </EntityType>
-        <EntityType Name="tbl_Category">
-          <Key>
-            <PropertyRef Name="CategoryId" />
-          </Key>
-          <Property Name="CategoryId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="CatgeoryName" Type="varchar" MaxLength="200" />
-          <Property Name="AliasName" Type="varchar" MaxLength="50" />
-          <Property Name="Description" Type="varchar(max)" />
-          <Property Name="CreationDateTime" Type="datetime" />
           <Property Name="IsActive" Type="bit" />
         </EntityType>
-        <EntityType Name="tbl_Tags">
+        <EntityType Name="tblCity">
           <Key>
-            <PropertyRef Name="TagId" />
+            <PropertyRef Name="CityId" />
           </Key>
-          <Property Name="TagId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="TagName" Type="varchar" MaxLength="50" />
+          <Property Name="CityId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CityName" Type="varchar" MaxLength="50" />
         </EntityType>
-      </Schema>
-    </edmx:StorageModels>
+        <EntityType Name="tblEmployee">
+          <Key>
+            <PropertyRef Name="EmployeeId" />
+          </Key>
+          <Property Name="EmployeeId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" />
+          <Property Name="JobTitle" Type="varchar" MaxLength="50" />
+          <Property Name="MobileNo" Type="varchar" MaxLength="50" />
+          <Property Name="Password" Type="varchar" MaxLength="50" />
+          <Property Name="OrganizationId" Type="int" />
+          <Property Name="IsPrimary" Type="nchar" MaxLength="10" />
+          <Property Name="CreationOn" Type="datetime" />
+          <Property Name="ModifiedOn" Type="datetime" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="DeviceId" Type="varchar" MaxLength="256" />
+          <Property Name="DeviceType" Type="varchar" MaxLength="50" />
+          <Property Name="DeviceToken" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="tblFavouriteOrganization">
+          <Key>
+            <PropertyRef Name="FavouriteId" />
+          </Key>
+          <Property Name="FavouriteId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FavOrganizationId" Type="int" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="CreationOn" Type="datetime" />
+          <Property Name="ModifiedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblOrder">
+          <Key>
+            <PropertyRef Name="OrderId" />
+          </Key>
+          <Property Name="OrderId" Type="int" Nullable="false" />
+          <Property Name="OrderDateTime" Type="datetime" />
+          <Property Name="RequesterLoginId" Type="int" />
+          <Property Name="RequesterOrganizationId" Type="int" />
+          <Property Name="RecieverOrganizationId" Type="int" />
+          <Property Name="StatusId" Type="int" />
+          <Property Name="LastStatusDateTime" Type="datetime" />
+          <Property Name="IsHandleByEmployeeId" Type="int" />
+        </EntityType>
+        <EntityType Name="tblOrderItems">
+          <Key>
+            <PropertyRef Name="ItemId" />
+          </Key>
+          <Property Name="ItemId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="OrderId" Type="int" />
+          <Property Name="ItemName" Type="varchar" MaxLength="50" />
+          <Property Name="Quantity" Type="float" />
+          <Property Name="QuantityType" Type="varchar" MaxLength="50" />
+          <Property Name="Prority" Type="int" />
+          <Property Name="Status" Type="int" />
+        </EntityType>
+        <EntityType Name="tblOrderStatus">
+          <Key>
+            <PropertyRef Name="StatusId" />
+          </Key>
+          <Property Name="StatusId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="StatusName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblOrganization">
+          <Key>
+            <PropertyRef Name="OrganizationId" />
+          </Key>
+          <Property Name="OrganizationId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" />
+          <Property Name="JobTitle" Type="varchar" MaxLength="50" />
+          <Property Name="CityId" Type="int" />
+          <Property Name="OrganizationName" Type="varchar" MaxLength="100" />
+          <Property Name="Address" Type="varchar" MaxLength="500" />
+          <Property Name="MobileNo" Type="varchar" MaxLength="50" />
+          <Property Name="Latitute" Type="varchar" MaxLength="50" />
+          <Property Name="Logitute" Type="varchar" MaxLength="50" />
+          <Property Name="MapAddress" Type="varchar" MaxLength="500" />
+          <Property Name="EmailAddress" Type="varchar" MaxLength="50" />
+          <Property Name="OrganizationWebsite" Type="varchar" MaxLength="50" />
+          <Property Name="CreationOn" Type="datetime" />
+          <Property Name="ModificationOn" Type="varchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="IsWorkingStatus" Type="bit" />
+          <Property Name="IsWorkingStatusMessge" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="tblPayment">
+          <Key>
+            <PropertyRef Name="PaymentId" />
+          </Key>
+          <Property Name="PaymentId" Type="int" Nullable="false" />
+          <Property Name="OrganizationId" Type="int" />
+          <Property Name="Amount" Type="nchar" MaxLength="10" />
+          <Property Name="NoofDays" Type="int" />
+          <Property Name="CreationDate" Type="datetime" />
+          <Property Name="Description" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <Association Name="FK_tblEmployee_tblEmployee">
+          <End Role="tblOrganization" Type="OrderManagementDatabaseModel.Store.tblOrganization" Multiplicity="0..1" />
+          <End Role="tblEmployee" Type="OrderManagementDatabaseModel.Store.tblEmployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblOrganization">
+              <PropertyRef Name="OrganizationId" />
+            </Principal>
+            <Dependent Role="tblEmployee">
+              <PropertyRef Name="OrganizationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblOrder_tblOrderStatus">
+          <End Role="tblOrderStatus" Type="OrderManagementDatabaseModel.Store.tblOrderStatus" Multiplicity="0..1" />
+          <End Role="tblOrder" Type="OrderManagementDatabaseModel.Store.tblOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblOrderStatus">
+              <PropertyRef Name="StatusId" />
+            </Principal>
+            <Dependent Role="tblOrder">
+              <PropertyRef Name="StatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblOrderItems_tblOrder">
+          <End Role="tblOrder" Type="OrderManagementDatabaseModel.Store.tblOrder" Multiplicity="0..1" />
+          <End Role="tblOrderItems" Type="OrderManagementDatabaseModel.Store.tblOrderItems" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblOrder">
+              <PropertyRef Name="OrderId" />
+            </Principal>
+            <Dependent Role="tblOrderItems">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblOrganization_tblCity">
+          <End Role="tblCity" Type="OrderManagementDatabaseModel.Store.tblCity" Multiplicity="0..1" />
+          <End Role="tblOrganization" Type="OrderManagementDatabaseModel.Store.tblOrganization" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCity">
+              <PropertyRef Name="CityId" />
+            </Principal>
+            <Dependent Role="tblOrganization">
+              <PropertyRef Name="CityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblPayment_tblOrganization">
+          <End Role="tblOrganization" Type="OrderManagementDatabaseModel.Store.tblOrganization" Multiplicity="0..1" />
+          <End Role="tblPayment" Type="OrderManagementDatabaseModel.Store.tblPayment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblOrganization">
+              <PropertyRef Name="OrganizationId" />
+            </Principal>
+            <Dependent Role="tblPayment">
+              <PropertyRef Name="OrganizationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="OrderManagementDatabaseModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="OrderManagementDatabaseEntities" p1:LazyLoadingEnabled="true">
-          <EntitySet Name="tbl_AdminLogin" EntityType="OrderManagementDatabaseModel.tbl_AdminLogin" />
-          <EntitySet Name="tbl_Category" EntityType="OrderManagementDatabaseModel.tbl_Category" />
-          <EntitySet Name="tbl_Tags" EntityType="OrderManagementDatabaseModel.tbl_Tags" />
+          <EntitySet Name="tblCities" EntityType="OrderManagementDatabaseModel.tblCity" />
+          <EntitySet Name="tblEmployees" EntityType="OrderManagementDatabaseModel.tblEmployee" />
+          <EntitySet Name="tblFavouriteOrganizations" EntityType="OrderManagementDatabaseModel.tblFavouriteOrganization" />
+          <EntitySet Name="tblOrders" EntityType="OrderManagementDatabaseModel.tblOrder" />
+          <EntitySet Name="tblOrderItems" EntityType="OrderManagementDatabaseModel.tblOrderItem" />
+          <EntitySet Name="tblOrderStatus" EntityType="OrderManagementDatabaseModel.tblOrderStatu" />
+          <EntitySet Name="tblOrganizations" EntityType="OrderManagementDatabaseModel.tblOrganization" />
+          <EntitySet Name="tblPayments" EntityType="OrderManagementDatabaseModel.tblPayment" />
+          <AssociationSet Name="FK_tblOrganization_tblCity" Association="OrderManagementDatabaseModel.FK_tblOrganization_tblCity">
+            <End Role="tblCity" EntitySet="tblCities" />
+            <End Role="tblOrganization" EntitySet="tblOrganizations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblEmployee_tblEmployee" Association="OrderManagementDatabaseModel.FK_tblEmployee_tblEmployee">
+            <End Role="tblOrganization" EntitySet="tblOrganizations" />
+            <End Role="tblEmployee" EntitySet="tblEmployees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblOrder_tblOrderStatus" Association="OrderManagementDatabaseModel.FK_tblOrder_tblOrderStatus">
+            <End Role="tblOrderStatu" EntitySet="tblOrderStatus" />
+            <End Role="tblOrder" EntitySet="tblOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblOrderItems_tblOrder" Association="OrderManagementDatabaseModel.FK_tblOrderItems_tblOrder">
+            <End Role="tblOrder" EntitySet="tblOrders" />
+            <End Role="tblOrderItem" EntitySet="tblOrderItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblPayment_tblOrganization" Association="OrderManagementDatabaseModel.FK_tblPayment_tblOrganization">
+            <End Role="tblOrganization" EntitySet="tblOrganizations" />
+            <End Role="tblPayment" EntitySet="tblPayments" />
+          </AssociationSet>
+          <EntitySet Name="tblAdminLogins" EntityType="OrderManagementDatabaseModel.tblAdminLogin" />
         </EntityContainer>
-        <EntityType Name="tbl_AdminLogin">
+        <EntityType Name="tblCity">
           <Key>
-            <PropertyRef Name="AdminLoginId" />
+            <PropertyRef Name="CityId" />
           </Key>
-          <Property Name="AdminLoginId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-          <Property Name="FirstName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
-          <Property Name="LastName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
-          <Property Name="UserName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
-          <Property Name="Password" Type="String" MaxLength="256" Unicode="false" FixedLength="false" />
-          <Property Name="RegisterDate" Type="DateTime" Precision="3" />
-          <Property Name="IsActive" Type="Byte" />
+          <Property Type="Int32" Name="CityId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="CityName" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblOrganizations" Relationship="OrderManagementDatabaseModel.FK_tblOrganization_tblCity" FromRole="tblCity" ToRole="tblOrganization" />
         </EntityType>
-        <EntityType Name="tbl_Category">
+        <EntityType Name="tblEmployee">
           <Key>
-            <PropertyRef Name="CategoryId" />
+            <PropertyRef Name="EmployeeId" />
           </Key>
-          <Property Name="CategoryId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-          <Property Name="CatgeoryName" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
-          <Property Name="AliasName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
-          <Property Name="Description" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
-          <Property Name="CreationDateTime" Type="DateTime" Precision="3" />
-          <Property Name="IsActive" Type="Boolean" />
+          <Property Type="Int32" Name="EmployeeId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="FirstName" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="LastName" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="JobTitle" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="MobileNo" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Password" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="OrganizationId" />
+          <Property Type="String" Name="IsPrimary" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Type="DateTime" Name="CreationOn" Precision="3" />
+          <Property Type="DateTime" Name="ModifiedOn" Precision="3" />
+          <Property Type="Boolean" Name="IsActive" />
+          <Property Type="String" Name="DeviceId" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="DeviceType" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="DeviceToken" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblOrganization" Relationship="OrderManagementDatabaseModel.FK_tblEmployee_tblEmployee" FromRole="tblEmployee" ToRole="tblOrganization" />
         </EntityType>
-        <EntityType Name="tbl_Tags">
+        <EntityType Name="tblFavouriteOrganization">
           <Key>
-            <PropertyRef Name="TagId" />
+            <PropertyRef Name="FavouriteId" />
           </Key>
-          <Property Name="TagId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-          <Property Name="TagName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Type="Int32" Name="FavouriteId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="FavOrganizationId" />
+          <Property Type="Int32" Name="UserId" />
+          <Property Type="DateTime" Name="CreationOn" Precision="3" />
+          <Property Type="DateTime" Name="ModifiedOn" Precision="3" />
         </EntityType>
-      </Schema>
+        <EntityType Name="tblOrder">
+          <Key>
+            <PropertyRef Name="OrderId" />
+          </Key>
+          <Property Type="Int32" Name="OrderId" Nullable="false" />
+          <Property Type="DateTime" Name="OrderDateTime" Precision="3" />
+          <Property Type="Int32" Name="RequesterLoginId" />
+          <Property Type="Int32" Name="RequesterOrganizationId" />
+          <Property Type="Int32" Name="RecieverOrganizationId" />
+          <Property Type="Int32" Name="StatusId" />
+          <Property Type="DateTime" Name="LastStatusDateTime" Precision="3" />
+          <Property Type="Int32" Name="IsHandleByEmployeeId" />
+          <NavigationProperty Name="tblOrderStatu" Relationship="OrderManagementDatabaseModel.FK_tblOrder_tblOrderStatus" FromRole="tblOrder" ToRole="tblOrderStatu" />
+          <NavigationProperty Name="tblOrderItems" Relationship="OrderManagementDatabaseModel.FK_tblOrderItems_tblOrder" FromRole="tblOrder" ToRole="tblOrderItem" />
+        </EntityType>
+        <EntityType Name="tblOrderItem">
+          <Key>
+            <PropertyRef Name="ItemId" />
+          </Key>
+          <Property Type="Int32" Name="ItemId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="OrderId" />
+          <Property Type="String" Name="ItemName" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Double" Name="Quantity" />
+          <Property Type="String" Name="QuantityType" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="Prority" />
+          <Property Type="Int32" Name="Status" />
+          <NavigationProperty Name="tblOrder" Relationship="OrderManagementDatabaseModel.FK_tblOrderItems_tblOrder" FromRole="tblOrderItem" ToRole="tblOrder" />
+        </EntityType>
+        <EntityType Name="tblOrderStatu">
+          <Key>
+            <PropertyRef Name="StatusId" />
+          </Key>
+          <Property Type="Int32" Name="StatusId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="StatusName" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblOrders" Relationship="OrderManagementDatabaseModel.FK_tblOrder_tblOrderStatus" FromRole="tblOrderStatu" ToRole="tblOrder" />
+        </EntityType>
+        <EntityType Name="tblOrganization">
+          <Key>
+            <PropertyRef Name="OrganizationId" />
+          </Key>
+          <Property Type="Int32" Name="OrganizationId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="FirstName" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="LastName" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="JobTitle" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="CityId" />
+          <Property Type="String" Name="OrganizationName" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Address" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="MobileNo" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Latitute" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Logitute" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="MapAddress" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="EmailAddress" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="OrganizationWebsite" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="CreationOn" Precision="3" />
+          <Property Type="String" Name="ModificationOn" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="IsActive" />
+          <Property Type="Boolean" Name="IsWorkingStatus" />
+          <Property Type="String" Name="IsWorkingStatusMessge" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblCity" Relationship="OrderManagementDatabaseModel.FK_tblOrganization_tblCity" FromRole="tblOrganization" ToRole="tblCity" />
+          <NavigationProperty Name="tblEmployees" Relationship="OrderManagementDatabaseModel.FK_tblEmployee_tblEmployee" FromRole="tblOrganization" ToRole="tblEmployee" />
+          <NavigationProperty Name="tblPayments" Relationship="OrderManagementDatabaseModel.FK_tblPayment_tblOrganization" FromRole="tblOrganization" ToRole="tblPayment" />
+        </EntityType>
+        <EntityType Name="tblPayment">
+          <Key>
+            <PropertyRef Name="PaymentId" />
+          </Key>
+          <Property Type="Int32" Name="PaymentId" Nullable="false" />
+          <Property Type="Int32" Name="OrganizationId" />
+          <Property Type="String" Name="Amount" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Type="Int32" Name="NoofDays" />
+          <Property Type="DateTime" Name="CreationDate" Precision="3" />
+          <Property Type="String" Name="Description" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblOrganization" Relationship="OrderManagementDatabaseModel.FK_tblPayment_tblOrganization" FromRole="tblPayment" ToRole="tblOrganization" />
+        </EntityType>
+        <Association Name="FK_tblOrganization_tblCity">
+          <End Type="OrderManagementDatabaseModel.tblCity" Role="tblCity" Multiplicity="0..1" />
+          <End Type="OrderManagementDatabaseModel.tblOrganization" Role="tblOrganization" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCity">
+              <PropertyRef Name="CityId" />
+            </Principal>
+            <Dependent Role="tblOrganization">
+              <PropertyRef Name="CityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblEmployee_tblEmployee">
+          <End Type="OrderManagementDatabaseModel.tblOrganization" Role="tblOrganization" Multiplicity="0..1" />
+          <End Type="OrderManagementDatabaseModel.tblEmployee" Role="tblEmployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblOrganization">
+              <PropertyRef Name="OrganizationId" />
+            </Principal>
+            <Dependent Role="tblEmployee">
+              <PropertyRef Name="OrganizationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblOrder_tblOrderStatus">
+          <End Type="OrderManagementDatabaseModel.tblOrderStatu" Role="tblOrderStatu" Multiplicity="0..1" />
+          <End Type="OrderManagementDatabaseModel.tblOrder" Role="tblOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblOrderStatu">
+              <PropertyRef Name="StatusId" />
+            </Principal>
+            <Dependent Role="tblOrder">
+              <PropertyRef Name="StatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblOrderItems_tblOrder">
+          <End Type="OrderManagementDatabaseModel.tblOrder" Role="tblOrder" Multiplicity="0..1" />
+          <End Type="OrderManagementDatabaseModel.tblOrderItem" Role="tblOrderItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblOrder">
+              <PropertyRef Name="OrderId" />
+            </Principal>
+            <Dependent Role="tblOrderItem">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblPayment_tblOrganization">
+          <End Type="OrderManagementDatabaseModel.tblOrganization" Role="tblOrganization" Multiplicity="0..1" />
+          <End Type="OrderManagementDatabaseModel.tblPayment" Role="tblPayment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblOrganization">
+              <PropertyRef Name="OrganizationId" />
+            </Principal>
+            <Dependent Role="tblPayment">
+              <PropertyRef Name="OrganizationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="tblAdminLogin">
+          <Key>
+            <PropertyRef Name="AdminId" />
+          </Key>
+          <Property Type="Int32" Name="AdminId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="FirstName" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="LastName" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="UserName" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Password" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="RegisterDate" Precision="3" />
+          <Property Type="Boolean" Name="IsActive" />
+        </EntityType>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="OrderManagementDatabaseModelStoreContainer" CdmEntityContainer="OrderManagementDatabaseEntities">
-          <EntitySetMapping Name="tbl_AdminLogin">
-            <EntityTypeMapping TypeName="OrderManagementDatabaseModel.tbl_AdminLogin">
-              <MappingFragment StoreEntitySet="tbl_AdminLogin">
-                <ScalarProperty Name="AdminLoginId" ColumnName="AdminLoginId" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <EntitySetMapping Name="tblCities">
+            <EntityTypeMapping TypeName="OrderManagementDatabaseModel.tblCity">
+              <MappingFragment StoreEntitySet="tblCity">
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblEmployees">
+            <EntityTypeMapping TypeName="OrderManagementDatabaseModel.tblEmployee">
+              <MappingFragment StoreEntitySet="tblEmployee">
+                <ScalarProperty Name="DeviceToken" ColumnName="DeviceToken" />
+                <ScalarProperty Name="DeviceType" ColumnName="DeviceType" />
+                <ScalarProperty Name="DeviceId" ColumnName="DeviceId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="CreationOn" ColumnName="CreationOn" />
+                <ScalarProperty Name="IsPrimary" ColumnName="IsPrimary" />
+                <ScalarProperty Name="OrganizationId" ColumnName="OrganizationId" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="RegisterDate" ColumnName="RegisterDate" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+                <ScalarProperty Name="JobTitle" ColumnName="JobTitle" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="tbl_Category">
-            <EntityTypeMapping TypeName="OrderManagementDatabaseModel.tbl_Category">
-              <MappingFragment StoreEntitySet="tbl_Category">
-                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
-                <ScalarProperty Name="CatgeoryName" ColumnName="CatgeoryName" />
-                <ScalarProperty Name="AliasName" ColumnName="AliasName" />
+          <EntitySetMapping Name="tblFavouriteOrganizations">
+            <EntityTypeMapping TypeName="OrderManagementDatabaseModel.tblFavouriteOrganization">
+              <MappingFragment StoreEntitySet="tblFavouriteOrganization">
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="CreationOn" ColumnName="CreationOn" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="FavOrganizationId" ColumnName="FavOrganizationId" />
+                <ScalarProperty Name="FavouriteId" ColumnName="FavouriteId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblOrders">
+            <EntityTypeMapping TypeName="OrderManagementDatabaseModel.tblOrder">
+              <MappingFragment StoreEntitySet="tblOrder">
+                <ScalarProperty Name="IsHandleByEmployeeId" ColumnName="IsHandleByEmployeeId" />
+                <ScalarProperty Name="LastStatusDateTime" ColumnName="LastStatusDateTime" />
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+                <ScalarProperty Name="RecieverOrganizationId" ColumnName="RecieverOrganizationId" />
+                <ScalarProperty Name="RequesterOrganizationId" ColumnName="RequesterOrganizationId" />
+                <ScalarProperty Name="RequesterLoginId" ColumnName="RequesterLoginId" />
+                <ScalarProperty Name="OrderDateTime" ColumnName="OrderDateTime" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblOrderItems">
+            <EntityTypeMapping TypeName="OrderManagementDatabaseModel.tblOrderItem">
+              <MappingFragment StoreEntitySet="tblOrderItems">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Prority" ColumnName="Prority" />
+                <ScalarProperty Name="QuantityType" ColumnName="QuantityType" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblOrderStatus">
+            <EntityTypeMapping TypeName="OrderManagementDatabaseModel.tblOrderStatu">
+              <MappingFragment StoreEntitySet="tblOrderStatus">
+                <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblOrganizations">
+            <EntityTypeMapping TypeName="OrderManagementDatabaseModel.tblOrganization">
+              <MappingFragment StoreEntitySet="tblOrganization">
+                <ScalarProperty Name="IsWorkingStatusMessge" ColumnName="IsWorkingStatusMessge" />
+                <ScalarProperty Name="IsWorkingStatus" ColumnName="IsWorkingStatus" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="ModificationOn" ColumnName="ModificationOn" />
+                <ScalarProperty Name="CreationOn" ColumnName="CreationOn" />
+                <ScalarProperty Name="OrganizationWebsite" ColumnName="OrganizationWebsite" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="MapAddress" ColumnName="MapAddress" />
+                <ScalarProperty Name="Logitute" ColumnName="Logitute" />
+                <ScalarProperty Name="Latitute" ColumnName="Latitute" />
+                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="OrganizationName" ColumnName="OrganizationName" />
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+                <ScalarProperty Name="JobTitle" ColumnName="JobTitle" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="OrganizationId" ColumnName="OrganizationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblPayments">
+            <EntityTypeMapping TypeName="OrderManagementDatabaseModel.tblPayment">
+              <MappingFragment StoreEntitySet="tblPayment">
                 <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="CreationDateTime" ColumnName="CreationDateTime" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="NoofDays" ColumnName="NoofDays" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="OrganizationId" ColumnName="OrganizationId" />
+                <ScalarProperty Name="PaymentId" ColumnName="PaymentId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="tbl_Tags">
-            <EntityTypeMapping TypeName="OrderManagementDatabaseModel.tbl_Tags">
-              <MappingFragment StoreEntitySet="tbl_Tags">
-                <ScalarProperty Name="TagId" ColumnName="TagId" />
-                <ScalarProperty Name="TagName" ColumnName="TagName" />
+          <EntitySetMapping Name="tblAdminLogins">
+            <EntityTypeMapping TypeName="OrderManagementDatabaseModel.tblAdminLogin">
+              <MappingFragment StoreEntitySet="tblAdminLogin">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="RegisterDate" ColumnName="RegisterDate" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="AdminId" ColumnName="AdminId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

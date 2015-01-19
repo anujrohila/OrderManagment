@@ -12,9 +12,15 @@ namespace OrderManagement.Web.Database
     using System;
     using System.Collections.Generic;
     
-    public partial class tbl_Tags
+    public partial class tblPayment
     {
-        public int TagId { get; set; }
-        public string TagName { get; set; }
+        public int PaymentId { get; set; }
+        public Nullable<int> OrganizationId { get; set; }
+        public string Amount { get; set; }
+        public Nullable<int> NoofDays { get; set; }
+        public Nullable<System.DateTime> CreationDate { get; set; }
+        public string Description { get; set; }
+    
+        public virtual tblOrganization tblOrganization { get; set; }
     }
 }

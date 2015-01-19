@@ -4,10 +4,21 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="57cecf763f18410c83b43b2a56e7dbfc" Name="Diagram1">
-        <EntityTypeShape EntityType="OrderManagementDatabaseModel.tbl_AdminLogin" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="OrderManagementDatabaseModel.tbl_Category" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="OrderManagementDatabaseModel.tbl_Tags" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
+      <Diagram DiagramId="57cecf763f18410c83b43b2a56e7dbfc" Name="Diagram1" ZoomLevel="88">
+        <EntityTypeShape EntityType="OrderManagementDatabaseModel.tblCity" Width="1.5" PointX="4.5" PointY="1" />
+        <EntityTypeShape EntityType="OrderManagementDatabaseModel.tblEmployee" Width="1.5" PointX="7.5" PointY="2.5" />
+        <EntityTypeShape EntityType="OrderManagementDatabaseModel.tblFavouriteOrganization" Width="1.5" PointX="10.5" PointY="4" />
+        <EntityTypeShape EntityType="OrderManagementDatabaseModel.tblOrder" Width="1.5" PointX="0.5" PointY="5.75" />
+        <EntityTypeShape EntityType="OrderManagementDatabaseModel.tblOrderItem" Width="1.5" PointX="3" PointY="7.25" />
+        <EntityTypeShape EntityType="OrderManagementDatabaseModel.tblOrderStatu" Width="1.5" PointX="6" PointY="8.75" />
+        <EntityTypeShape EntityType="OrderManagementDatabaseModel.tblOrganization" Width="1.5" PointX="9" PointY="10.25" />
+        <EntityTypeShape EntityType="OrderManagementDatabaseModel.tblPayment" Width="1.5" PointX="4.5" PointY="11.5" />
+        <AssociationConnector Association="OrderManagementDatabaseModel.FK_tblOrganization_tblCity" />
+        <AssociationConnector Association="OrderManagementDatabaseModel.FK_tblEmployee_tblEmployee" />
+        <AssociationConnector Association="OrderManagementDatabaseModel.FK_tblOrder_tblOrderStatus" />
+        <AssociationConnector Association="OrderManagementDatabaseModel.FK_tblOrderItems_tblOrder" />
+        <AssociationConnector Association="OrderManagementDatabaseModel.FK_tblPayment_tblOrganization" />
+        <EntityTypeShape EntityType="OrderManagementDatabaseModel.tblAdminLogin" Width="1.5" PointX="8.4061773402645148" PointY="28.541401786981805" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

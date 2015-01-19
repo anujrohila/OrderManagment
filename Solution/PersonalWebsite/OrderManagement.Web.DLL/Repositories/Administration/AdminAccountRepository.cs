@@ -30,16 +30,16 @@ namespace OrderManagement.Web.DLL
         /// Get AdminLogin details
         /// </summary>
         /// <returns></returns>
-        public tbl_AdminLogin_DTO GetAdminLoginDetail(tbl_AdminLogin_DTO tbl_AdminLogin_DTO)
+        public tblAdminLoginDTO GetAdminLoginDetail(tblAdminLoginDTO tblAdminLoginDTO)
         {
             using (var OrderManagementDataContext = new OrderManagementDatabaseEntities())
             {
-                return (from admin in OrderManagementDataContext.tbl_AdminLogin
-                        where admin.UserName == tbl_AdminLogin_DTO.UserName
+                return (from admin in OrderManagementDataContext.tblAdminLogins
+                        where admin.UserName == tblAdminLoginDTO.UserName
                               && admin.Password == admin.Password
-                        select new tbl_AdminLogin_DTO()
+                        select new tblAdminLoginDTO()
                         {
-                            AdminLoginId = admin.AdminLoginId,
+                            AdminId = admin.AdminId,
                             FirstName = admin.FirstName,
                             LastName = admin.LastName,
                             UserName = admin.UserName,

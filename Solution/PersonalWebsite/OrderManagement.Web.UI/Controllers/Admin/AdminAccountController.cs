@@ -48,13 +48,13 @@ namespace OrderManagement.Web.UI.Controllers.Admin
             if (ModelState.IsValid)
             {
                 //Convert login model to admin login dto
-                tbl_AdminLogin_DTO adminLoginDTO = new tbl_AdminLogin_DTO();
+                tblAdminLoginDTO adminLoginDTO = new tblAdminLoginDTO();
                 adminLoginDTO.UserName = loginModel.UserName;
                 adminLoginDTO.Password = loginModel.Password;
                 var loginReponse = adminAccountBusinessLogic.GetAdminLoginDetail(adminLoginDTO);
                 if (loginReponse != null)
                 {
-                    Session["AdminId"] = loginReponse.AdminLoginId;
+                    Session["AdminId"] = loginReponse.AdminId;
                     Session.Timeout = 20;
                     return RedirectToAction("Index", "AdminHome");
                 }

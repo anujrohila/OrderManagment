@@ -19,12 +19,12 @@ namespace OrderManagement.Web.BLL
         /// Get All user device usages
         /// </summary>
         /// <returns></returns>
-        public tbl_AdminLogin_DTO GetAdminLoginDetail(tbl_AdminLogin_DTO tbl_AdminLogin_DTO)
+        public tblAdminLoginDTO GetAdminLoginDetail(tblAdminLoginDTO tblAdminLoginDTO)
         {
             try
             {
                 //LogGenerator.Info(string.Format("GetAdminLoginDetail-{0}", tbl_AdminLogin_DTO));
-                var user = ServiceReference.AdminServiceClient.GetAdminLoginDetail(tbl_AdminLogin_DTO);
+                var user = ServiceReference.AdminServiceClient.GetAdminLoginDetail(tblAdminLoginDTO);
                 if (user.Success)
                 {
                     return user.Value;

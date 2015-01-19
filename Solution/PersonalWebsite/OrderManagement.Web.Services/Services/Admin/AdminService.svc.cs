@@ -20,13 +20,13 @@ namespace OrderManagement.Web.Services.Services.Admin
         /// Get AdminLogin details
         /// </summary>
         /// <returns></returns>
-        public ServiceResult<tbl_AdminLogin_DTO> GetAdminLoginDetail(tbl_AdminLogin_DTO tbl_AdminLogin_DTO)
+        public ServiceResult<tblAdminLoginDTO> GetAdminLoginDetail(tblAdminLoginDTO tblAdminLoginDTO)
         {
             var adminAccountRepository = new AdminAccountRepository();
-            var adminDetail = new ServiceResult<tbl_AdminLogin_DTO>();
+            var adminDetail = new ServiceResult<tblAdminLoginDTO>();
             try
             {
-                adminDetail.Value = adminAccountRepository.GetAdminLoginDetail(tbl_AdminLogin_DTO);
+                adminDetail.Value = adminAccountRepository.GetAdminLoginDetail(tblAdminLoginDTO);
                 adminDetail.Success = true;
                
             }
@@ -43,110 +43,110 @@ namespace OrderManagement.Web.Services.Services.Admin
 
         #region [Admin Category]
 
-        /// <summary>
-        /// Insert Category
-        /// </summary>
-        /// <returns></returns>
-        public ServiceResult<bool> InsertCategory(tbl_Category_DTO tbl_Category_DTO)
-        {
-            var adminCategoryRepository = new AdminCategoryRepository();
-            var result = new ServiceResult<bool>();
-            try
-            {
-                result.Value = adminCategoryRepository.InsertCategory(tbl_Category_DTO);
-                result.Success = true;
-            }
-            catch (Exception exception)
-            {
-                result.ExceptionInfo = new ExceptionInfo(exception);
-                result.Success = false;
-            }
-            return result;
-        }
+        ///// <summary>
+        ///// Insert Category
+        ///// </summary>
+        ///// <returns></returns>
+        //public ServiceResult<bool> InsertCategory(tbl_Category_DTO tbl_Category_DTO)
+        //{
+        //    var adminCategoryRepository = new AdminCategoryRepository();
+        //    var result = new ServiceResult<bool>();
+        //    try
+        //    {
+        //        result.Value = adminCategoryRepository.InsertCategory(tbl_Category_DTO);
+        //        result.Success = true;
+        //    }
+        //    catch (Exception exception)
+        //    {
+        //        result.ExceptionInfo = new ExceptionInfo(exception);
+        //        result.Success = false;
+        //    }
+        //    return result;
+        //}
 
-        /// <summary>
-        /// Update Category
-        /// </summary>
-        /// <returns></returns>
-        public ServiceResult<bool> UpdateCategory(tbl_Category_DTO tbl_Category_DTO)
-        {
-            var adminCategoryRepository = new AdminCategoryRepository();
-            var result = new ServiceResult<bool>();
-            try
-            {
-                result.Value = adminCategoryRepository.UpdateCategory(tbl_Category_DTO);
-                result.Success = true;
-            }
-            catch (Exception exception)
-            {
-                result.ExceptionInfo = new ExceptionInfo(exception);
-                result.Success = false;
-            }
-            return result;
-        }
+        ///// <summary>
+        ///// Update Category
+        ///// </summary>
+        ///// <returns></returns>
+        //public ServiceResult<bool> UpdateCategory(tbl_Category_DTO tbl_Category_DTO)
+        //{
+        //    var adminCategoryRepository = new AdminCategoryRepository();
+        //    var result = new ServiceResult<bool>();
+        //    try
+        //    {
+        //        result.Value = adminCategoryRepository.UpdateCategory(tbl_Category_DTO);
+        //        result.Success = true;
+        //    }
+        //    catch (Exception exception)
+        //    {
+        //        result.ExceptionInfo = new ExceptionInfo(exception);
+        //        result.Success = false;
+        //    }
+        //    return result;
+        //}
 
-        /// <summary>
-        /// Delete Category
-        /// </summary>
-        /// <returns></returns>
-        public ServiceResult<bool> DeleteCategory(int categoryId)
-        {
-            var adminCategoryRepository = new AdminCategoryRepository();
-            var result = new ServiceResult<bool>();
-            try
-            {
-                result.Value = adminCategoryRepository.DeleteCategory(categoryId);
-                result.Success = true;
-            }
-            catch (Exception exception)
-            {
-                result.ExceptionInfo = new ExceptionInfo(exception);
-                result.Success = false;
-            }
-            return result;
-        }
+        ///// <summary>
+        ///// Delete Category
+        ///// </summary>
+        ///// <returns></returns>
+        //public ServiceResult<bool> DeleteCategory(int categoryId)
+        //{
+        //    var adminCategoryRepository = new AdminCategoryRepository();
+        //    var result = new ServiceResult<bool>();
+        //    try
+        //    {
+        //        result.Value = adminCategoryRepository.DeleteCategory(categoryId);
+        //        result.Success = true;
+        //    }
+        //    catch (Exception exception)
+        //    {
+        //        result.ExceptionInfo = new ExceptionInfo(exception);
+        //        result.Success = false;
+        //    }
+        //    return result;
+        //}
 
-        /// <summary>
-        /// Get category details
-        /// </summary>
-        /// <returns></returns>
-        public ServiceResult<tbl_Category_DTO> GetAdminCategory(int categoryId)
-        {
-            var adminCategoryRepository = new AdminCategoryRepository();
-            var result = new ServiceResult<tbl_Category_DTO>();
-            try
-            {
-                result.Value = adminCategoryRepository.GetAdminCategory(categoryId);
-                result.Success = true;
-            }
-            catch (Exception exception)
-            {
-                result.ExceptionInfo = new ExceptionInfo(exception);
-                result.Success = false;
-            }
-            return result;
-        }
+        ///// <summary>
+        ///// Get category details
+        ///// </summary>
+        ///// <returns></returns>
+        //public ServiceResult<tbl_Category_DTO> GetAdminCategory(int categoryId)
+        //{
+        //    var adminCategoryRepository = new AdminCategoryRepository();
+        //    var result = new ServiceResult<tbl_Category_DTO>();
+        //    try
+        //    {
+        //        result.Value = adminCategoryRepository.GetAdminCategory(categoryId);
+        //        result.Success = true;
+        //    }
+        //    catch (Exception exception)
+        //    {
+        //        result.ExceptionInfo = new ExceptionInfo(exception);
+        //        result.Success = false;
+        //    }
+        //    return result;
+        //}
 
-        /// <summary>
-        /// Get all categorys
-        /// </summary>
-        /// <returns></returns>
-        public ServiceResult<List<tbl_Category_DTO>> GetAllAdminCategory()
-        {
-            var adminCategoryRepository = new AdminCategoryRepository();
-            var result = new ServiceResult<List<tbl_Category_DTO>>();
-            try
-            {
-                result.Value = adminCategoryRepository.GetAllAdminCategory();
-                result.Success = true;
-            }
-            catch (Exception exception)
-            {
-                result.ExceptionInfo = new ExceptionInfo(exception);
-                result.Success = false;
-            }
-            return result;
-        }
+        ///// <summary>
+        ///// Get all categorys
+        ///// </summary>
+        ///// <returns></returns>
+        //public ServiceResult<List<tbl_Category_DTO>> GetAllAdminCategory()
+        //{
+        //    var adminCategoryRepository = new AdminCategoryRepository();
+        //    var result = new ServiceResult<List<tbl_Category_DTO>>();
+        //    try
+        //    {
+        //        result.Value = adminCategoryRepository.GetAllAdminCategory();
+        //        result.Success = true;
+        //    }
+        //    catch (Exception exception)
+        //    {
+        //        result.ExceptionInfo = new ExceptionInfo(exception);
+        //        result.Success = false;
+        //    }
+        //    return result;
+        //}
 
         #endregion
 

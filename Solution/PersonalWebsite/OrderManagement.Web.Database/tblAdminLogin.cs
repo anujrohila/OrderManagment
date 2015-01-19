@@ -12,14 +12,14 @@ namespace OrderManagement.Web.Database
     using System;
     using System.Collections.Generic;
     
-    public partial class tbl_AdminLogin
+    public partial class tblAdminLogin
     {
-        public int AdminLoginId { get; set; }
+        public int AdminId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string UserName { get; set; }
         public string Password { get; set; }
         public Nullable<System.DateTime> RegisterDate { get; set; }
-        public Nullable<byte> IsActive { get; set; }
+        public Nullable<bool> IsActive { get; set; }
     }
 }

@@ -62,13 +62,31 @@
       <DependentUpon>OrderManagement_SQLServer.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="tbl_AdminLogin.cs">
+    <Compile Include="tblAdminLogin.cs">
       <DependentUpon>OrderManagement_SQLServer.tt</DependentUpon>
     </Compile>
-    <Compile Include="tbl_Category.cs">
+    <Compile Include="tblCity.cs">
       <DependentUpon>OrderManagement_SQLServer.tt</DependentUpon>
     </Compile>
-    <Compile Include="tbl_Tags.cs">
+    <Compile Include="tblEmployee.cs">
+      <DependentUpon>OrderManagement_SQLServer.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblFavouriteOrganization.cs">
+      <DependentUpon>OrderManagement_SQLServer.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblOrder.cs">
+      <DependentUpon>OrderManagement_SQLServer.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblOrderItem.cs">
+      <DependentUpon>OrderManagement_SQLServer.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblOrderStatu.cs">
+      <DependentUpon>OrderManagement_SQLServer.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblOrganization.cs">
+      <DependentUpon>OrderManagement_SQLServer.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblPayment.cs">
       <DependentUpon>OrderManagement_SQLServer.tt</DependentUpon>
     </Compile>
   </ItemGroup>

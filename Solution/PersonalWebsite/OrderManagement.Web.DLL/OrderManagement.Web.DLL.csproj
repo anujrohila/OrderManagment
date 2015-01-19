@@ -49,7 +49,6 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\Administration\AdminAccountRepository.cs" />
-    <Compile Include="Repositories\Administration\AdminCategoryRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Utility\" />
