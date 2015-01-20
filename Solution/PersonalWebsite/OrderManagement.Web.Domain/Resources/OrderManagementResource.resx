@@ -291,4 +291,16 @@
   <data name="msgConfirmDeleteCategory" xml:space="preserve">
     <value>Are you sure you want to delete category.</value>
   </data>
+  <data name="lblMobileNo" xml:space="preserve">
+    <value>Mobile No</value>
+  </data>
+  <data name="lblOrganizationName" xml:space="preserve">
+    <value>Organization Name</value>
+  </data>
+  <data name="validationRequiredMobileNo" xml:space="preserve">
+    <value>Please enter mobile no.</value>
+  </data>
+  <data name="validationRequiredOrganizationName" xml:space="preserve">
+    <value>Please enter organization name.</value>
+  </data>
 </root>

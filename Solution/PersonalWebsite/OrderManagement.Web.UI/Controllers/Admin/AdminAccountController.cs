@@ -71,9 +71,40 @@ namespace OrderManagement.Web.UI.Controllers.Admin
 
         }
 
+        [HttpGet]
         public ActionResult Register()
         {
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult Register(tblOrganizationDTO tblOrganizationDTOModel)
+        {
+            if (ModelState.IsValid)
+            {
+                //Convert login model to admin login dto
+                tblAdminLoginDTO adminLoginDTO = new tblAdminLoginDTO();
+                tblOrganizationDTOModel.CreationOn = DateTime.Now;
+                tblOrganizationDTOModel.CityId = 1;
+                tblOrganizationDTOModel.IsActive = true;
+                var registerResult = adminAccountBusinessLogic.Register(tblOrganizationDTOModel);
+                if (registerResult != null)
+                {
+                    Session["AdminId"] = registerResult;
+                    Session.Timeout = 20;
+                    return RedirectToAction("Index", "AdminHome");
+                }
+                else
+                {
+                    //loginModel.ModelMessage.Add(new ModelMessage { Code = 1, Message = OrderManagementResource.msgIncorrectUserNameAndPassword, Type = MessageType.Error });
+                }
+                return View(tblOrganizationDTOModel);
+            }
+            else
+            {
+                return View(tblOrganizationDTOModel);
+            }
+
         }
 
         #endregion

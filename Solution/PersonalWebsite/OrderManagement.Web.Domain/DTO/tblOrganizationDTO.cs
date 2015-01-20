@@ -8,9 +8,10 @@
 //-------------------------------------------------------------------------------------------------------
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-
+using OrderManagement.Web.Domain.Resources;
 namespace OrderManagement.Web.Domain
 {
     [DataContract()]
@@ -20,9 +21,13 @@ namespace OrderManagement.Web.Domain
         public Int32 OrganizationId { get; set; }
 
         [DataMember()]
+        [Required(ErrorMessageResourceType = typeof(OrderManagementResource), ErrorMessageResourceName = "validationRequiredFirstName")]
+        [StringLength(255, ErrorMessageResourceName = "validationRange0To255", ErrorMessageResourceType = typeof(OrderManagementResource))]
         public String FirstName { get; set; }
 
         [DataMember()]
+        [Required(ErrorMessageResourceType = typeof(OrderManagementResource), ErrorMessageResourceName = "validationRequiredLastName")]
+        [StringLength(255, ErrorMessageResourceName = "validationRange0To255", ErrorMessageResourceType = typeof(OrderManagementResource))]
         public String LastName { get; set; }
 
         [DataMember()]
@@ -32,12 +37,15 @@ namespace OrderManagement.Web.Domain
         public Nullable<Int32> CityId { get; set; }
 
         [DataMember()]
+        [Required(ErrorMessageResourceType = typeof(OrderManagementResource), ErrorMessageResourceName = "validationRequiredOrganizationName")]
+        [StringLength(255, ErrorMessageResourceName = "validationRange0To255", ErrorMessageResourceType = typeof(OrderManagementResource))]
         public String OrganizationName { get; set; }
 
         [DataMember()]
         public String Address { get; set; }
 
         [DataMember()]
+        [Required(ErrorMessageResourceType = typeof(OrderManagementResource), ErrorMessageResourceName = "validationRequiredMobileNo")]
         public String MobileNo { get; set; }
 
         [DataMember()]

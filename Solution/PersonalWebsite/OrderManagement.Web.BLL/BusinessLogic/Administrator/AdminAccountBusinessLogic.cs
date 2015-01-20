@@ -36,6 +36,26 @@ namespace OrderManagement.Web.BLL
             return null;
         }
 
+        /// <summary>
+        /// Register user
+        /// </summary>
+        /// <returns></returns>
+        public int Register(tblOrganizationDTO tblOrganizationDTO)
+        {
+            try
+            {
+                LogGenerator.Info(string.Format("Register-{0}", tblOrganizationDTO));
+                //var user = ServiceReference.AdminServiceClient.GetAdminLoginDetail(tblAdminLoginDTO);
+                var adminAccountRepository = new AdminAccountRepository();
+                return adminAccountRepository.Register(tblOrganizationDTO);
+            }
+            catch (Exception ex)
+            {
+                LogGenerator.Error("Register", ex);
+            }
+            return 0;
+        }
+
         #endregion
     }
 }

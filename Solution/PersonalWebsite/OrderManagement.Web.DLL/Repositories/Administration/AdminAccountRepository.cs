@@ -49,6 +49,50 @@ namespace OrderManagement.Web.DLL
             }
         }
 
+        /// <summary>
+        /// Register user
+        /// </summary>
+        /// <returns></returns>
+        public int Register(tblOrganizationDTO tblOrganizationDTO)
+        {
+            using (var OrderManagementDataContext = new OrderManagementDatabaseEntities())
+            {
+                var tblOrganization = new tblOrganization();
+                if (tblOrganizationDTO.OrganizationId == 0)
+                {
+                    tblOrganization.FirstName = tblOrganizationDTO.FirstName;
+                    tblOrganization.LastName = tblOrganizationDTO.LastName;
+                    tblOrganization.MobileNo = tblOrganizationDTO.MobileNo;
+                    tblOrganization.OrganizationName = tblOrganizationDTO.OrganizationName;
+                    OrderManagementDataContext.tblOrganizations.Add(tblOrganization);
+                }
+                else
+                {
+                    tblOrganization = OrderManagementDataContext.tblOrganizations.Find(tblOrganizationDTO.OrganizationId);
+                    tblOrganization.FirstName = tblOrganizationDTO.FirstName;
+                    tblOrganization.LastName = tblOrganizationDTO.LastName;
+                    tblOrganization.MobileNo = tblOrganizationDTO.MobileNo;
+                    tblOrganization.OrganizationName = tblOrganizationDTO.OrganizationName;
+                }
+                tblOrganization.CityId = tblOrganizationDTO.CityId;
+                tblOrganization.JobTitle = tblOrganizationDTO.JobTitle;
+                tblOrganization.Address = tblOrganizationDTO.Address;
+                tblOrganization.Latitute = tblOrganizationDTO.Latitute;
+                tblOrganization.Logitute = tblOrganizationDTO.Logitute;
+                tblOrganization.MapAddress = tblOrganizationDTO.MapAddress;
+                tblOrganization.EmailAddress = tblOrganizationDTO.EmailAddress;
+                tblOrganization.OrganizationWebsite = tblOrganizationDTO.OrganizationWebsite;
+                tblOrganization.CreationOn = tblOrganizationDTO.CreationOn;
+                tblOrganization.ModificationOn = tblOrganizationDTO.ModificationOn;
+                tblOrganization.IsActive = tblOrganizationDTO.IsActive;
+                tblOrganization.IsWorkingStatus = tblOrganizationDTO.IsWorkingStatus;
+                tblOrganization.IsWorkingStatusMessge = tblOrganizationDTO.IsWorkingStatusMessge;
+                OrderManagementDataContext.SaveChanges();
+                return tblOrganization.OrganizationId;
+            }
+        }
+
+
         #endregion
     }
 }
