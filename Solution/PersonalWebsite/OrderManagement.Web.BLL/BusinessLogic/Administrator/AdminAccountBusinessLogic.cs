@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using OrderManagement.Web.Domain;
+using OrderManagement.Web.DLL;
 
 namespace OrderManagement.Web.BLL
 {
@@ -24,19 +25,13 @@ namespace OrderManagement.Web.BLL
             try
             {
                 LogGenerator.Info(string.Format("GetAdminLoginDetail-{0}", tblAdminLoginDTO));
-                var user = ServiceReference.AdminServiceClient.GetAdminLoginDetail(tblAdminLoginDTO);
-                if (user.Success)
-                {
-                    return user.Value;
-                }
-                else
-                {
-                    LogGenerator.Error(user.ExceptionInfo.ToString());
-                }
+                //var user = ServiceReference.AdminServiceClient.GetAdminLoginDetail(tblAdminLoginDTO);
+                var adminAccountRepository = new AdminAccountRepository();
+                return adminAccountRepository.GetAdminLoginDetail(tblAdminLoginDTO);
             }
             catch (Exception ex)
             {
-                LogGenerator.Error("GetUser", ex);
+                LogGenerator.Error("GetAdminLoginDetail", ex);
             }
             return null;
         }

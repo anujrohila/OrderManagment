@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderManagement.Web.UI", "O
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderManagement.Web.Services", "OrderManagement.Web.Services\OrderManagement.Web.Services.csproj", "{4FAAB45E-B0A1-4521-9615-1E3781A21C95}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderManagement.Web.WebAPI", "OrderManagement.Web.WebAPI\OrderManagement.Web.WebAPI.csproj", "{18B272E3-38A8-481D-8007-4F4C2AF2F438}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,6 +45,10 @@ Global
 		{4FAAB45E-B0A1-4521-9615-1E3781A21C95}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4FAAB45E-B0A1-4521-9615-1E3781A21C95}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4FAAB45E-B0A1-4521-9615-1E3781A21C95}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18B272E3-38A8-481D-8007-4F4C2AF2F438}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18B272E3-38A8-481D-8007-4F4C2AF2F438}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18B272E3-38A8-481D-8007-4F4C2AF2F438}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18B272E3-38A8-481D-8007-4F4C2AF2F438}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

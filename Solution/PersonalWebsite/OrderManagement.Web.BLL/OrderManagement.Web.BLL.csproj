@@ -69,6 +69,10 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\OrderManagement.Web.DLL\OrderManagement.Web.DLL.csproj">
+      <Project>{bf937e97-0ce2-4ca7-8956-66916130fdba}</Project>
+      <Name>OrderManagement.Web.DLL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\OrderManagement.Web.Domain\OrderManagement.Web.Domain.csproj">
       <Project>{609f3df0-17bd-45de-a62a-94949f33133f}</Project>
       <Name>OrderManagement.Web.Domain</Name>
