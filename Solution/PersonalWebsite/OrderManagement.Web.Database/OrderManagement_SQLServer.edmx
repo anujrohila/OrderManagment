@@ -66,7 +66,7 @@
           <Property Name="MobileNo" Type="varchar" MaxLength="50" />
           <Property Name="Password" Type="varchar" MaxLength="50" />
           <Property Name="OrganizationId" Type="int" />
-          <Property Name="IsPrimary" Type="nchar" MaxLength="10" />
+          <Property Name="IsPrimary" Type="bit" />
           <Property Name="CreationOn" Type="datetime" />
           <Property Name="ModifiedOn" Type="datetime" />
           <Property Name="IsActive" Type="bit" />
@@ -134,7 +134,7 @@
           <Property Name="EmailAddress" Type="varchar" MaxLength="50" />
           <Property Name="OrganizationWebsite" Type="varchar" MaxLength="50" />
           <Property Name="CreationOn" Type="datetime" />
-          <Property Name="ModificationOn" Type="varchar" MaxLength="50" />
+          <Property Name="ModificationOn" Type="datetime" />
           <Property Name="IsActive" Type="bit" />
           <Property Name="IsWorkingStatus" Type="bit" />
           <Property Name="IsWorkingStatusMessge" Type="varchar" MaxLength="500" />
@@ -264,7 +264,7 @@
           <Property Type="String" Name="MobileNo" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="Password" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Type="Int32" Name="OrganizationId" />
-          <Property Type="String" Name="IsPrimary" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="IsPrimary" />
           <Property Type="DateTime" Name="CreationOn" Precision="3" />
           <Property Type="DateTime" Name="ModifiedOn" Precision="3" />
           <Property Type="Boolean" Name="IsActive" />
@@ -337,7 +337,7 @@
           <Property Type="String" Name="EmailAddress" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="OrganizationWebsite" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Type="DateTime" Name="CreationOn" Precision="3" />
-          <Property Type="String" Name="ModificationOn" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ModificationOn" />
           <Property Type="Boolean" Name="IsActive" />
           <Property Type="Boolean" Name="IsWorkingStatus" />
           <Property Type="String" Name="IsWorkingStatusMessge" MaxLength="500" FixedLength="false" Unicode="false" />
