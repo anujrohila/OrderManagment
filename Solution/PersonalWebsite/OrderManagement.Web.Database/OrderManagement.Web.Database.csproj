@@ -89,6 +89,12 @@
     <Compile Include="tblPayment.cs">
       <DependentUpon>OrderManagement_SQLServer.tt</DependentUpon>
     </Compile>
+    <Compile Include="tblSMSQueue.cs">
+      <DependentUpon>OrderManagement_SQLServer.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_AdminLogin.cs">
+      <DependentUpon>OrderManagement_SQLServer.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />

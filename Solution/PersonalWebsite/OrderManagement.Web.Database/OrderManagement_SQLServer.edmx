@@ -6,6 +6,7 @@
     <edmx:StorageModels>
     <Schema Namespace="OrderManagementDatabaseModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityContainer Name="OrderManagementDatabaseModelStoreContainer">
+          <EntitySet Name="tbl_AdminLogin" EntityType="OrderManagementDatabaseModel.Store.tbl_AdminLogin" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="tblAdminLogin" EntityType="OrderManagementDatabaseModel.Store.tblAdminLogin" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="tblCity" EntityType="OrderManagementDatabaseModel.Store.tblCity" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="tblEmployee" EntityType="OrderManagementDatabaseModel.Store.tblEmployee" store:Type="Tables" Schema="dbo" />
@@ -15,6 +16,7 @@
           <EntitySet Name="tblOrderStatus" EntityType="OrderManagementDatabaseModel.Store.tblOrderStatus" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="tblOrganization" EntityType="OrderManagementDatabaseModel.Store.tblOrganization" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="tblPayment" EntityType="OrderManagementDatabaseModel.Store.tblPayment" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblSMSQueue" EntityType="OrderManagementDatabaseModel.Store.tblSMSQueue" store:Type="Tables" Schema="dbo" />
           <AssociationSet Name="FK_tblEmployee_tblEmployee" Association="OrderManagementDatabaseModel.Store.FK_tblEmployee_tblEmployee">
             <End Role="tblOrganization" EntitySet="tblOrganization" />
             <End Role="tblEmployee" EntitySet="tblEmployee" />
@@ -36,6 +38,18 @@
             <End Role="tblPayment" EntitySet="tblPayment" />
           </AssociationSet>
         </EntityContainer>
+        <EntityType Name="tbl_AdminLogin">
+          <Key>
+            <PropertyRef Name="AdminLoginId" />
+          </Key>
+          <Property Name="AdminLoginId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" />
+          <Property Name="UserName" Type="varchar" MaxLength="50" />
+          <Property Name="Password" Type="varchar" MaxLength="256" />
+          <Property Name="RegisterDate" Type="datetime" />
+          <Property Name="IsActive" Type="tinyint" />
+        </EntityType>
         <EntityType Name="tblAdminLogin">
           <Key>
             <PropertyRef Name="AdminId" />
@@ -150,6 +164,15 @@
           <Property Name="CreationDate" Type="datetime" />
           <Property Name="Description" Type="varchar" MaxLength="500" />
         </EntityType>
+        <EntityType Name="tblSMSQueue">
+          <Key>
+            <PropertyRef Name="RowId" />
+          </Key>
+          <Property Name="RowId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="MobileNo" Type="varchar" MaxLength="50" />
+          <Property Name="Message" Type="varchar" MaxLength="500" />
+          <Property Name="CreationDateTime" Type="datetime" />
+        </EntityType>
         <Association Name="FK_tblEmployee_tblEmployee">
           <End Role="tblOrganization" Type="OrderManagementDatabaseModel.Store.tblOrganization" Multiplicity="0..1" />
           <End Role="tblEmployee" Type="OrderManagementDatabaseModel.Store.tblEmployee" Multiplicity="*" />
@@ -215,6 +238,8 @@
     <edmx:ConceptualModels>
       <Schema Namespace="OrderManagementDatabaseModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="OrderManagementDatabaseEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="tbl_AdminLogin" EntityType="OrderManagementDatabaseModel.tbl_AdminLogin" />
+          <EntitySet Name="tblAdminLogins" EntityType="OrderManagementDatabaseModel.tblAdminLogin" />
           <EntitySet Name="tblCities" EntityType="OrderManagementDatabaseModel.tblCity" />
           <EntitySet Name="tblEmployees" EntityType="OrderManagementDatabaseModel.tblEmployee" />
           <EntitySet Name="tblFavouriteOrganizations" EntityType="OrderManagementDatabaseModel.tblFavouriteOrganization" />
@@ -243,8 +268,32 @@
             <End Role="tblOrganization" EntitySet="tblOrganizations" />
             <End Role="tblPayment" EntitySet="tblPayments" />
           </AssociationSet>
-          <EntitySet Name="tblAdminLogins" EntityType="OrderManagementDatabaseModel.tblAdminLogin" />
+          <EntitySet Name="tblSMSQueues" EntityType="OrderManagementDatabaseModel.tblSMSQueue" />
         </EntityContainer>
+        <EntityType Name="tbl_AdminLogin">
+          <Key>
+            <PropertyRef Name="AdminLoginId" />
+          </Key>
+          <Property Type="Int32" Name="AdminLoginId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="FirstName" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="LastName" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="UserName" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Password" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="RegisterDate" Precision="3" />
+          <Property Type="Byte" Name="IsActive" />
+        </EntityType>
+        <EntityType Name="tblAdminLogin">
+          <Key>
+            <PropertyRef Name="AdminId" />
+          </Key>
+          <Property Type="Int32" Name="AdminId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="FirstName" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="LastName" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="UserName" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Password" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="RegisterDate" Precision="3" />
+          <Property Type="Boolean" Name="IsActive" />
+        </EntityType>
         <EntityType Name="tblCity">
           <Key>
             <PropertyRef Name="CityId" />
@@ -264,7 +313,7 @@
           <Property Type="String" Name="MobileNo" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="Password" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Type="Int32" Name="OrganizationId" />
-          <Property Type="String" Name="IsPrimary" />
+          <Property Type="Boolean" Name="IsPrimary" />
           <Property Type="DateTime" Name="CreationOn" Precision="3" />
           <Property Type="DateTime" Name="ModifiedOn" Precision="3" />
           <Property Type="Boolean" Name="IsActive" />
@@ -337,7 +386,7 @@
           <Property Type="String" Name="EmailAddress" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="OrganizationWebsite" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Type="DateTime" Name="CreationOn" Precision="3" />
-          <Property Type="String" Name="ModificationOn" />
+          <Property Type="DateTime" Name="ModificationOn" Precision="3" />
           <Property Type="Boolean" Name="IsActive" />
           <Property Type="Boolean" Name="IsWorkingStatus" />
           <Property Type="String" Name="IsWorkingStatusMessge" MaxLength="500" FixedLength="false" Unicode="false" />
@@ -417,17 +466,14 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="tblAdminLogin">
+        <EntityType Name="tblSMSQueue">
           <Key>
-            <PropertyRef Name="AdminId" />
+            <PropertyRef Name="RowId" />
           </Key>
-          <Property Type="Int32" Name="AdminId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="FirstName" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="LastName" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="UserName" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="Password" MaxLength="256" FixedLength="false" Unicode="false" />
-          <Property Type="DateTime" Name="RegisterDate" Precision="3" />
-          <Property Type="Boolean" Name="IsActive" />
+          <Property Type="Int32" Name="RowId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="MobileNo" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Message" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="CreationDateTime" Precision="3" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -435,6 +481,32 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="OrderManagementDatabaseModelStoreContainer" CdmEntityContainer="OrderManagementDatabaseEntities">
+          <EntitySetMapping Name="tbl_AdminLogin">
+            <EntityTypeMapping TypeName="OrderManagementDatabaseModel.tbl_AdminLogin">
+              <MappingFragment StoreEntitySet="tbl_AdminLogin">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="RegisterDate" ColumnName="RegisterDate" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="AdminLoginId" ColumnName="AdminLoginId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblAdminLogins">
+            <EntityTypeMapping TypeName="OrderManagementDatabaseModel.tblAdminLogin">
+              <MappingFragment StoreEntitySet="tblAdminLogin">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="RegisterDate" ColumnName="RegisterDate" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="AdminId" ColumnName="AdminId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="tblCities">
             <EntityTypeMapping TypeName="OrderManagementDatabaseModel.tblCity">
               <MappingFragment StoreEntitySet="tblCity">
@@ -545,16 +617,13 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="tblAdminLogins">
-            <EntityTypeMapping TypeName="OrderManagementDatabaseModel.tblAdminLogin">
-              <MappingFragment StoreEntitySet="tblAdminLogin">
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="RegisterDate" ColumnName="RegisterDate" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="AdminId" ColumnName="AdminId" />
+          <EntitySetMapping Name="tblSMSQueues">
+            <EntityTypeMapping TypeName="OrderManagementDatabaseModel.tblSMSQueue">
+              <MappingFragment StoreEntitySet="tblSMSQueue">
+                <ScalarProperty Name="CreationDateTime" ColumnName="CreationDateTime" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+                <ScalarProperty Name="RowId" ColumnName="RowId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

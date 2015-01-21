@@ -25,6 +25,8 @@ namespace OrderManagement.Web.Database
             throw new UnintentionalCodeFirstException();
         }
     
+        public DbSet<tbl_AdminLogin> tbl_AdminLogin { get; set; }
+        public DbSet<tblAdminLogin> tblAdminLogins { get; set; }
         public DbSet<tblCity> tblCities { get; set; }
         public DbSet<tblEmployee> tblEmployees { get; set; }
         public DbSet<tblFavouriteOrganization> tblFavouriteOrganizations { get; set; }
@@ -33,6 +35,6 @@ namespace OrderManagement.Web.Database
         public DbSet<tblOrderStatu> tblOrderStatus { get; set; }
         public DbSet<tblOrganization> tblOrganizations { get; set; }
         public DbSet<tblPayment> tblPayments { get; set; }
-        public DbSet<tblAdminLogin> tblAdminLogins { get; set; }
+        public DbSet<tblSMSQueue> tblSMSQueues { get; set; }
     }
 }

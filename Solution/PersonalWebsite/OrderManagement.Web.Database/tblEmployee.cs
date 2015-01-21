@@ -21,7 +21,7 @@ namespace OrderManagement.Web.Database
         public string MobileNo { get; set; }
         public string Password { get; set; }
         public Nullable<int> OrganizationId { get; set; }
-        public string IsPrimary { get; set; }
+        public Nullable<bool> IsPrimary { get; set; }
         public Nullable<System.DateTime> CreationOn { get; set; }
         public Nullable<System.DateTime> ModifiedOn { get; set; }
         public Nullable<bool> IsActive { get; set; }

@@ -34,7 +34,7 @@ namespace OrderManagement.Web.Database
         public string EmailAddress { get; set; }
         public string OrganizationWebsite { get; set; }
         public Nullable<System.DateTime> CreationOn { get; set; }
-        public string ModificationOn { get; set; }
+        public Nullable<System.DateTime> ModificationOn { get; set; }
         public Nullable<bool> IsActive { get; set; }
         public Nullable<bool> IsWorkingStatus { get; set; }
         public string IsWorkingStatusMessge { get; set; }

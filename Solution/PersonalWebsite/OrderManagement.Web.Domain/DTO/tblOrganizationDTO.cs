@@ -67,7 +67,7 @@ namespace OrderManagement.Web.Domain
         public Nullable<DateTime> CreationOn { get; set; }
 
         [DataMember()]
-        public String ModificationOn { get; set; }
+        public Nullable<DateTime> ModificationOn { get; set; }
 
         [DataMember()]
         public Nullable<Boolean> IsActive { get; set; }
@@ -87,33 +87,6 @@ namespace OrderManagement.Web.Domain
         [DataMember()]
         public List<Int32> tblPayments_PaymentId { get; set; }
 
-        public tblOrganizationDTO()
-        {
-        }
-
-        public tblOrganizationDTO(Int32 organizationId, String firstName, String lastName, String jobTitle, Nullable<Int32> cityId, String organizationName, String address, String mobileNo, String latitute, String logitute, String mapAddress, String emailAddress, String organizationWebsite, Nullable<DateTime> creationOn, String modificationOn, Nullable<Boolean> isActive, Nullable<Boolean> isWorkingStatus, String isWorkingStatusMessge, Int32 tblCity_CityId, List<Int32> tblEmployees_EmployeeId, List<Int32> tblPayments_PaymentId)
-        {
-			this.OrganizationId = organizationId;
-			this.FirstName = firstName;
-			this.LastName = lastName;
-			this.JobTitle = jobTitle;
-			this.CityId = cityId;
-			this.OrganizationName = organizationName;
-			this.Address = address;
-			this.MobileNo = mobileNo;
-			this.Latitute = latitute;
-			this.Logitute = logitute;
-			this.MapAddress = mapAddress;
-			this.EmailAddress = emailAddress;
-			this.OrganizationWebsite = organizationWebsite;
-			this.CreationOn = creationOn;
-			this.ModificationOn = modificationOn;
-			this.IsActive = isActive;
-			this.IsWorkingStatus = isWorkingStatus;
-			this.IsWorkingStatusMessge = isWorkingStatusMessge;
-			this.tblCity_CityId = tblCity_CityId;
-			this.tblEmployees_EmployeeId = tblEmployees_EmployeeId;
-			this.tblPayments_PaymentId = tblPayments_PaymentId;
-        }
+        public string Password { get; set; }
     }
 }

@@ -87,12 +87,14 @@ namespace OrderManagement.Web.UI.Controllers.Admin
                 tblOrganizationDTOModel.CreationOn = DateTime.Now;
                 tblOrganizationDTOModel.CityId = 1;
                 tblOrganizationDTOModel.IsActive = true;
+                tblOrganizationDTOModel.Password = Encryption.Encrypt(DateTime.Now.ToString("yyyy_mm_ss_HH_ss_fff")).Substring(0, 6);
+                tblOrganizationDTOModel.IsWorkingStatus = true;
+                tblOrganizationDTOModel.IsWorkingStatusMessge = OrderManagementResource.lblAvailable;
                 var registerResult = adminAccountBusinessLogic.Register(tblOrganizationDTOModel);
-                if (registerResult != null)
+                if (registerResult > 0)
                 {
-                    Session["AdminId"] = registerResult;
-                    Session.Timeout = 20;
-                    return RedirectToAction("Index", "AdminHome");
+                    SmsQueueBusinessLogic.Add(new tblSMSQueueDTO { MobileNo = tblOrganizationDTOModel.MobileNo, Message = string.Format("Your password is :  {0}", tblOrganizationDTOModel.Password) });
+                    return RedirectToAction("Login", "AdminAccount");
                 }
                 else
                 {
@@ -106,6 +108,7 @@ namespace OrderManagement.Web.UI.Controllers.Admin
             }
 
         }
+
 
         #endregion
 

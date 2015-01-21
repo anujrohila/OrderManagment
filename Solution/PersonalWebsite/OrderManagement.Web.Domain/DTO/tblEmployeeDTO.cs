@@ -38,7 +38,7 @@ namespace OrderManagement.Web.Domain
         public Nullable<Int32> OrganizationId { get; set; }
 
         [DataMember()]
-        public String IsPrimary { get; set; }
+        public Nullable<bool> IsPrimary { get; set; }
 
         [DataMember()]
         public Nullable<DateTime> CreationOn { get; set; }
@@ -61,27 +61,5 @@ namespace OrderManagement.Web.Domain
         [DataMember()]
         public Int32 tblOrganization_OrganizationId { get; set; }
 
-        public tblEmployeeDTO()
-        {
-        }
-
-        public tblEmployeeDTO(Int32 employeeId, String firstName, String lastName, String jobTitle, String mobileNo, String password, Nullable<Int32> organizationId, String isPrimary, Nullable<DateTime> creationOn, Nullable<DateTime> modifiedOn, Nullable<Boolean> isActive, String deviceId, String deviceType, String deviceToken, Int32 tblOrganization_OrganizationId)
-        {
-			this.EmployeeId = employeeId;
-			this.FirstName = firstName;
-			this.LastName = lastName;
-			this.JobTitle = jobTitle;
-			this.MobileNo = mobileNo;
-			this.Password = password;
-			this.OrganizationId = organizationId;
-			this.IsPrimary = isPrimary;
-			this.CreationOn = creationOn;
-			this.ModifiedOn = modifiedOn;
-			this.IsActive = isActive;
-			this.DeviceId = deviceId;
-			this.DeviceType = deviceType;
-			this.DeviceToken = deviceToken;
-			this.tblOrganization_OrganizationId = tblOrganization_OrganizationId;
-        }
     }
 }

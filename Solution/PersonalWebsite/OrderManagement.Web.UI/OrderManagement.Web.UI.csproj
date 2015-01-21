@@ -1047,6 +1047,7 @@
     <Content Include="Views\Shared\PageHeaderPartialView.cshtml" />
     <Content Include="Views\AdminCategory\Index.cshtml" />
     <Content Include="Views\AdminCategory\_CategoryList.cshtml" />
+    <Content Include="Views\AdminHome\Profile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

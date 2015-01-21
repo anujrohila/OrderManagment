@@ -34,6 +34,13 @@ namespace OrderManagement.Web.UI.Controllers.Admin
             return View();
         }
 
+
+        [HttpGet]
+        public ActionResult Profile()
+        {
+            return View();
+        }
+
         #endregion
 
         #region [Method]

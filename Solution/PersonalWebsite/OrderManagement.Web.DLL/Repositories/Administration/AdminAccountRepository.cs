@@ -65,6 +65,19 @@ namespace OrderManagement.Web.DLL
                     tblOrganization.MobileNo = tblOrganizationDTO.MobileNo;
                     tblOrganization.OrganizationName = tblOrganizationDTO.OrganizationName;
                     OrderManagementDataContext.tblOrganizations.Add(tblOrganization);
+
+                    //Adding Default Employees as per organization 
+                    var tblEmployee = new tblEmployee();
+                    tblEmployee.FirstName = tblOrganizationDTO.FirstName;
+                    tblEmployee.LastName = tblOrganizationDTO.LastName;
+                    tblEmployee.JobTitle = tblOrganizationDTO.JobTitle;
+                    tblEmployee.MobileNo = tblOrganizationDTO.MobileNo;
+                    tblEmployee.Password = tblOrganizationDTO.Password;
+                    tblEmployee.OrganizationId = tblOrganization.OrganizationId;
+                    tblEmployee.IsPrimary = true;
+                    tblEmployee.CreationOn = tblOrganizationDTO.CreationOn;
+                    tblEmployee.IsActive = true;
+                    OrderManagementDataContext.tblEmployees.Add(tblEmployee);
                 }
                 else
                 {
@@ -87,6 +100,7 @@ namespace OrderManagement.Web.DLL
                 tblOrganization.IsActive = tblOrganizationDTO.IsActive;
                 tblOrganization.IsWorkingStatus = tblOrganizationDTO.IsWorkingStatus;
                 tblOrganization.IsWorkingStatusMessge = tblOrganizationDTO.IsWorkingStatusMessge;
+
                 OrderManagementDataContext.SaveChanges();
                 return tblOrganization.OrganizationId;
             }
