@@ -79,7 +79,8 @@ namespace OrderManagement.Web.UI.Controllers.Admin
         [HttpGet]
         public ActionResult Register()
         {
-            return View();
+            var tblOrganizationDTO = new tblOrganizationDTO();
+            return View(tblOrganizationDTO);
         }
 
         [HttpPost]
