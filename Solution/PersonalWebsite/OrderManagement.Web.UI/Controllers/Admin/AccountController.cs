@@ -47,16 +47,22 @@ namespace OrderManagement.Web.UI.Controllers.Admin
         {
             if (ModelState.IsValid)
             {
-                //Convert login model to admin login dto
-                tblAdminLoginDTO adminLoginDTO = new tblAdminLoginDTO();
-                adminLoginDTO.UserName = loginModel.UserName;
-                adminLoginDTO.Password = loginModel.Password;
-                var loginReponse = adminAccountBusinessLogic.GetAdminLoginDetail(adminLoginDTO);
+                var employeeDTO = new tblEmployeeDTO();
+                employeeDTO.MobileNo = loginModel.UserName;
+                employeeDTO.Password = loginModel.Password;
+                var loginReponse = adminAccountBusinessLogic.GetAdminLoginDetail(employeeDTO);
                 if (loginReponse != null)
                 {
-                    Session["AdminId"] = loginReponse.AdminId;
-                    Session.Timeout = 20;
-                    return RedirectToAction("Index", "AdminHome");
+                    if (loginReponse.IsActive == true)
+                    {
+                        Session["AdminId"] = loginReponse.EmployeeId;
+                        Session.Timeout = 20;
+                        return RedirectToAction("Index", "AdminHome");
+                    }
+                    else
+                    {
+                        loginModel.ModelMessage.Add(new ModelMessage { Code = 1, Message = OrderManagementResource.msgDiableUserAccount, Type = MessageType.Error });
+                    }
                 }
                 else
                 {
@@ -68,7 +74,6 @@ namespace OrderManagement.Web.UI.Controllers.Admin
             {
                 return View(loginModel);
             }
-
         }
 
         [HttpGet]
@@ -83,20 +88,29 @@ namespace OrderManagement.Web.UI.Controllers.Admin
             if (ModelState.IsValid)
             {
                 //Convert login model to admin login dto
-                tblAdminLoginDTO adminLoginDTO = new tblAdminLoginDTO();
-                tblOrganizationDTOModel.CreationOn = DateTime.Now;
-                tblOrganizationDTOModel.CityId = 1;
-                tblOrganizationDTOModel.IsActive = true;
-                var registerResult = adminAccountBusinessLogic.Register(tblOrganizationDTOModel);
-                if (registerResult > 0)
+                if (adminAccountBusinessLogic.IsMobileNoExists(tblOrganizationDTOModel.MobileNo) == false)
                 {
-                    SmsQueueBusinessLogic.Add(new tblSMSQueueDTO { MobileNo = tblOrganizationDTOModel.MobileNo, Message = "Register successsfully." });
-                    return RedirectToAction("Login", "Account");
+                    tblOrganizationDTOModel.CreationOn = DateTime.Now;
+                    tblOrganizationDTOModel.CityId = 1;
+                    tblOrganizationDTOModel.IsActive = true;
+                    tblOrganizationDTOModel.IsWorkingStatus = true;
+                    tblOrganizationDTOModel.IsWorkingStatusMessge = OrderManagementResource.lblAvailable;
+                    var registerResult = adminAccountBusinessLogic.Register(tblOrganizationDTOModel);
+                    if (registerResult > 0)
+                    {
+                        SmsQueueBusinessLogic.Add(new tblSMSQueueDTO { MobileNo = tblOrganizationDTOModel.MobileNo, Message = "Register successsfully." });
+                        return RedirectToAction("Login", "Account");
+                    }
+                    else
+                    {
+                        tblOrganizationDTOModel.ModelMessage.Add(new ModelMessage { Code = 1, Message = OrderManagementResource.msgIncorrectUserNameAndPassword, Type = MessageType.Error });
+                    }
                 }
                 else
                 {
-                    //loginModel.ModelMessage.Add(new ModelMessage { Code = 1, Message = OrderManagementResource.msgIncorrectUserNameAndPassword, Type = MessageType.Error });
+                    tblOrganizationDTOModel.ModelMessage.Add(new ModelMessage { Code = 1, Message = OrderManagementResource.msgMobileNoExists, Type = MessageType.Error });
                 }
+                
                 return View(tblOrganizationDTOModel);
             }
             else
@@ -107,6 +121,12 @@ namespace OrderManagement.Web.UI.Controllers.Admin
 
         [HttpGet]
         public ActionResult ForgotPassword()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult RegisterSuccess()
         {
             return View();
         }

@@ -59,6 +59,9 @@ namespace OrderManagement.Web.Domain
         public String DeviceToken { get; set; }
 
         [DataMember()]
+        public Nullable<bool> IsDeleted { get; set; }
+
+        [DataMember()]
         public Int32 tblOrganization_OrganizationId { get; set; }
 
     }

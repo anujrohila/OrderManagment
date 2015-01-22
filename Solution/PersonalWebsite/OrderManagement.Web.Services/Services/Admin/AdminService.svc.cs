@@ -16,27 +16,27 @@ namespace OrderManagement.Web.Services.Services.Admin
 
         #region [Admin Account]
 
-        /// <summary>
-        /// Get AdminLogin details
-        /// </summary>
-        /// <returns></returns>
-        public ServiceResult<tblAdminLoginDTO> GetAdminLoginDetail(tblAdminLoginDTO tblAdminLoginDTO)
-        {
-            var adminAccountRepository = new AdminAccountRepository();
-            var adminDetail = new ServiceResult<tblAdminLoginDTO>();
-            try
-            {
-                adminDetail.Value = adminAccountRepository.GetAdminLoginDetail(tblAdminLoginDTO);
-                adminDetail.Success = true;
+        ///// <summary>
+        ///// Get AdminLogin details
+        ///// </summary>
+        ///// <returns></returns>
+        //public ServiceResult<tblAdminLoginDTO> GetAdminLoginDetail(tblAdminLoginDTO tblAdminLoginDTO)
+        //{
+        //    var adminAccountRepository = new AdminAccountRepository();
+        //    var adminDetail = new ServiceResult<tblAdminLoginDTO>();
+        //    try
+        //    {
+        //        adminDetail.Value = adminAccountRepository.GetAdminLoginDetail(tblAdminLoginDTO);
+        //        adminDetail.Success = true;
                
-            }
-            catch (Exception exception)
-            {
-                adminDetail.ExceptionInfo = new ExceptionInfo(exception);
-                adminDetail.Success = false;
-            }
-            return adminDetail;
-        }
+        //    }
+        //    catch (Exception exception)
+        //    {
+        //        adminDetail.ExceptionInfo = new ExceptionInfo(exception);
+        //        adminDetail.Success = false;
+        //    }
+        //    return adminDetail;
+        //}
 
 
         #endregion

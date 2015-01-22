@@ -15,7 +15,7 @@ using OrderManagement.Web.Domain.Resources;
 namespace OrderManagement.Web.Domain
 {
     [DataContract()]
-    public partial class tblOrganizationDTO
+    public partial class tblOrganizationDTO : CommonModel
     {
         [DataMember()]
         public Int32 OrganizationId { get; set; }
@@ -46,6 +46,8 @@ namespace OrderManagement.Web.Domain
 
         [DataMember()]
         [Required(ErrorMessageResourceType = typeof(OrderManagementResource), ErrorMessageResourceName = "validationRequiredMobileNo")]
+        [StringLength(10, MinimumLength = 10, ErrorMessageResourceName = "validationMobileNo", ErrorMessageResourceType = typeof(OrderManagementResource))]
+        [RegularExpression(RegularExpressionString.RegularMobileNo, ErrorMessageResourceName = "validationRegularMobileNo", ErrorMessageResourceType = typeof(OrderManagementResource))]
         public String MobileNo { get; set; }
 
         [DataMember()]
@@ -87,6 +89,10 @@ namespace OrderManagement.Web.Domain
         [DataMember()]
         public List<Int32> tblPayments_PaymentId { get; set; }
 
+        [DataMember]
+        [Required(ErrorMessageResourceType = typeof(OrderManagementResource), ErrorMessageResourceName = "validationRequiredPassword")]
+        [StringLength(12, MinimumLength = 4, ErrorMessageResourceName = "validationPasswordRangeBetween4To12", ErrorMessageResourceType = typeof(OrderManagementResource))]
+        [DataType(DataType.Password)]
         public string Password { get; set; }
     }
 }

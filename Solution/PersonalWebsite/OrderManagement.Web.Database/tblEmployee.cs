@@ -28,6 +28,7 @@ namespace OrderManagement.Web.Database
         public string DeviceId { get; set; }
         public string DeviceType { get; set; }
         public string DeviceToken { get; set; }
+        public Nullable<bool> IsDeleted { get; set; }
     
         public virtual tblOrganization tblOrganization { get; set; }
     }

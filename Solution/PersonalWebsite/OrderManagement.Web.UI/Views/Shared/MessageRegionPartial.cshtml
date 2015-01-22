@@ -8,25 +8,21 @@
           {
               foreach (var success in Model.Where(m => m.Type == MessageType.Success))
               {
-        <div class="alert alert-success">
-            <button type="button" class="close" data-dismiss="alert">×</button>
-            <strong></strong>@success.Message
+        <div class="successMessage">
+            <small class="help-block" style="">@success.Message</small>
         </div>
               }
           }
-
           if (Model.Where(m => m.Type == MessageType.Error).Count() > 0)
           {
-
               foreach (var error in Model.Where(m => m.Type == MessageType.Error))
               {
-        <div class="alert alert-error">
-            <button type="button" class="close" data-dismiss="alert">×</button>
-            <strong></strong>@error.Message
+        <div class="has-error">
+            <small class="help-block" style="">@error.Message</small>
         </div> 
               }
           }
-        <div style="margin-bottom: 20px">
+        <div style="margin-bottom: 5px">
         </div> 
       }    
     }

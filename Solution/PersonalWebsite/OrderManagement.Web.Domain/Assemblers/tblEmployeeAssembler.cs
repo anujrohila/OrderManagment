@@ -58,7 +58,7 @@ namespace OrderManagement.Web.Domain.Assemblers
             entity.DeviceId = dto.DeviceId;
             entity.DeviceType = dto.DeviceType;
             entity.DeviceToken = dto.DeviceToken;
-
+            entity.IsDeleted = dto.IsDeleted;
             dto.OnEntity(entity);
 
             return entity;
@@ -88,7 +88,7 @@ namespace OrderManagement.Web.Domain.Assemblers
             dto.DeviceId = entity.DeviceId;
             dto.DeviceType = entity.DeviceType;
             dto.DeviceToken = entity.DeviceToken;
-
+            dto.IsDeleted = entity.IsDeleted;
             entity.OnDTO(dto);
 
             return dto;

@@ -25,25 +25,23 @@ namespace OrderManagement.Web.DLL
 
         #region [Methods]
 
-
         /// <summary>
         /// Get AdminLogin details
         /// </summary>
         /// <returns></returns>
-        public tblAdminLoginDTO GetAdminLoginDetail(tblAdminLoginDTO tblAdminLoginDTO)
+        public tblEmployeeDTO GetAdminLoginDetail(tblEmployeeDTO tblEmployeeDTO)
         {
             using (var OrderManagementDataContext = new OrderManagementDatabaseEntities())
             {
-                return (from admin in OrderManagementDataContext.tblAdminLogins
-                        where admin.UserName == tblAdminLoginDTO.UserName
+                return (from admin in OrderManagementDataContext.tblEmployees
+                        where admin.MobileNo == tblEmployeeDTO.MobileNo
                               && admin.Password == admin.Password
-                        select new tblAdminLoginDTO()
+                        select new tblEmployeeDTO()
                         {
-                            AdminId = admin.AdminId,
+                            EmployeeId = admin.EmployeeId,
                             FirstName = admin.FirstName,
                             LastName = admin.LastName,
-                            UserName = admin.UserName,
-                            Password = admin.Password,
+                            MobileNo = admin.MobileNo,
                             IsActive = admin.IsActive
                         }).FirstOrDefault();
             }
@@ -77,6 +75,7 @@ namespace OrderManagement.Web.DLL
                     tblEmployee.IsPrimary = true;
                     tblEmployee.CreationOn = tblOrganizationDTO.CreationOn;
                     tblEmployee.IsActive = true;
+                    tblEmployee.IsActive = false;
                     OrderManagementDataContext.tblEmployees.Add(tblEmployee);
                 }
                 else
@@ -103,6 +102,22 @@ namespace OrderManagement.Web.DLL
 
                 OrderManagementDataContext.SaveChanges();
                 return tblOrganization.OrganizationId;
+            }
+        }
+
+        /// <summary>
+        /// Check is mobile is already exists
+        /// </summary>
+        /// <param name="mobileNo"></param>
+        /// <returns></returns>
+        public bool IsMobileNoExists(string mobileNo)
+        {
+            using (var OrderManagementDataContext = new OrderManagementDatabaseEntities())
+            {
+                return OrderManagementDataContext.tblEmployees
+                                        .Where(employee => string.Compare(employee.MobileNo, mobileNo, StringComparison.CurrentCultureIgnoreCase) == 0 && employee.IsDeleted == false)
+                                        .ToList()
+                                        .Count() > 0;
             }
         }
 

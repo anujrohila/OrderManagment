@@ -304,6 +304,15 @@ namespace OrderManagement.Web.Domain.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Register Success.
+        /// </summary>
+        public static string lblRegisterSuccess {
+            get {
+                return ResourceManager.GetString("lblRegisterSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Remember Me.
         /// </summary>
         public static string lblRememberMe {
@@ -367,11 +376,56 @@ namespace OrderManagement.Web.Domain.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Your account is disabled please contact admin for more details..
+        /// </summary>
+        public static string msgDiableUserAccount {
+            get {
+                return ResourceManager.GetString("msgDiableUserAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The username or password you entered is incorrect..
         /// </summary>
         public static string msgIncorrectUserNameAndPassword {
             get {
                 return ResourceManager.GetString("msgIncorrectUserNameAndPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mobile no already exists please delete your mobile from last organization then you can continue using this..
+        /// </summary>
+        public static string msgMobileNoExists {
+            get {
+                return ResourceManager.GetString("msgMobileNoExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You are register successfully with us. Login your self and get benift with us..
+        /// </summary>
+        public static string msgRegisterSuccess {
+            get {
+                return ResourceManager.GetString("msgRegisterSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter must be 10 characters number..
+        /// </summary>
+        public static string validationMobileNo {
+            get {
+                return ResourceManager.GetString("validationMobileNo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter password between 4 and 12..
+        /// </summary>
+        public static string validationPasswordRangeBetween4To12 {
+            get {
+                return ResourceManager.GetString("validationPasswordRangeBetween4To12", resourceCulture);
             }
         }
         
@@ -516,6 +570,15 @@ namespace OrderManagement.Web.Domain.Resources {
         public static string validationRangeGreaterThenZero {
             get {
                 return ResourceManager.GetString("validationRangeGreaterThenZero", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid mobile no value must contain 10 value size..
+        /// </summary>
+        public static string validationRegularMobileNo {
+            get {
+                return ResourceManager.GetString("validationRegularMobileNo", resourceCulture);
             }
         }
         

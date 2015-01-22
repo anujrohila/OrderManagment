@@ -15,8 +15,8 @@ namespace OrderManagement.Web.Services.Services.Admin
         
         #region [Admin Account]
 
-        [OperationContract]
-        ServiceResult<tblAdminLoginDTO> GetAdminLoginDetail(tblAdminLoginDTO tbl_AdminLogin_DTO);
+        //[OperationContract]
+        //ServiceResult<tblAdminLoginDTO> GetAdminLoginDetail(tblAdminLoginDTO tbl_AdminLogin_DTO);
 
         #endregion
 

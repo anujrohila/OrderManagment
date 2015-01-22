@@ -17,17 +17,16 @@ namespace OrderManagement.Web.BLL
         #region [Methods
 
         /// <summary>
-        /// Get All user device usages
+        /// Get Employee Details
         /// </summary>
         /// <returns></returns>
-        public tblAdminLoginDTO GetAdminLoginDetail(tblAdminLoginDTO tblAdminLoginDTO)
+        public tblEmployeeDTO GetAdminLoginDetail(tblEmployeeDTO tblEmployeeDTO)
         {
             try
             {
-                LogGenerator.Info(string.Format("GetAdminLoginDetail-{0}", tblAdminLoginDTO));
-                //var user = ServiceReference.AdminServiceClient.GetAdminLoginDetail(tblAdminLoginDTO);
+                LogGenerator.Info(string.Format("GetAdminLoginDetail-{0}", tblEmployeeDTO));
                 var adminAccountRepository = new AdminAccountRepository();
-                return adminAccountRepository.GetAdminLoginDetail(tblAdminLoginDTO);
+                return adminAccountRepository.GetAdminLoginDetail(tblEmployeeDTO);
             }
             catch (Exception ex)
             {
@@ -45,7 +44,6 @@ namespace OrderManagement.Web.BLL
             try
             {
                 LogGenerator.Info(string.Format("Register-{0}", tblOrganizationDTO));
-                //var user = ServiceReference.AdminServiceClient.GetAdminLoginDetail(tblAdminLoginDTO);
                 var adminAccountRepository = new AdminAccountRepository();
                 return adminAccountRepository.Register(tblOrganizationDTO);
             }
@@ -54,6 +52,26 @@ namespace OrderManagement.Web.BLL
                 LogGenerator.Error("Register", ex);
             }
             return 0;
+        }
+
+        /// <summary>
+        /// Check is mobile is already exists
+        /// </summary>
+        /// <param name="mobileNo"></param>
+        /// <returns></returns>
+        public bool IsMobileNoExists(string mobileNo)
+        {
+            try
+            {
+                LogGenerator.Info(string.Format("IsMobileNoExists-{0}", mobileNo));
+                var adminAccountRepository = new AdminAccountRepository();
+                return adminAccountRepository.IsMobileNoExists(mobileNo);
+            }
+            catch (Exception ex)
+            {
+                LogGenerator.Error("IsMobileNoExists", ex);
+            }
+            return true;
         }
 
         #endregion

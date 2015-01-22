@@ -87,6 +87,7 @@
           <Property Name="DeviceId" Type="varchar" MaxLength="256" />
           <Property Name="DeviceType" Type="varchar" MaxLength="50" />
           <Property Name="DeviceToken" Type="varchar" MaxLength="500" />
+          <Property Name="IsDeleted" Type="bit" />
         </EntityType>
         <EntityType Name="tblFavouriteOrganization">
           <Key>
@@ -321,6 +322,7 @@
           <Property Type="String" Name="DeviceType" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="DeviceToken" MaxLength="500" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="tblOrganization" Relationship="OrderManagementDatabaseModel.FK_tblEmployee_tblEmployee" FromRole="tblEmployee" ToRole="tblOrganization" />
+          <Property Type="Boolean" Name="IsDeleted" />
         </EntityType>
         <EntityType Name="tblFavouriteOrganization">
           <Key>
@@ -518,6 +520,7 @@
           <EntitySetMapping Name="tblEmployees">
             <EntityTypeMapping TypeName="OrderManagementDatabaseModel.tblEmployee">
               <MappingFragment StoreEntitySet="tblEmployee">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="DeviceToken" ColumnName="DeviceToken" />
                 <ScalarProperty Name="DeviceType" ColumnName="DeviceType" />
                 <ScalarProperty Name="DeviceId" ColumnName="DeviceId" />
