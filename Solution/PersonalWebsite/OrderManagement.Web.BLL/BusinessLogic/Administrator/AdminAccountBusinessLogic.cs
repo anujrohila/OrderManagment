@@ -74,6 +74,26 @@ namespace OrderManagement.Web.BLL
             return true;
         }
 
+        /// <summary>
+        /// Check is organization name is already exists
+        /// </summary>
+        /// <param name="mobileNo"></param>
+        /// <returns></returns>
+        public bool IsOrganizationExists(string organizationName)
+        {
+            try
+            {
+                LogGenerator.Info(string.Format("IsOrganizationExists-{0}", organizationName));
+                var adminAccountRepository = new AdminAccountRepository();
+                return adminAccountRepository.IsMobileNoExists(organizationName);
+            }
+            catch (Exception ex)
+            {
+                LogGenerator.Error("IsOrganizationExists", ex);
+            }
+            return true;
+        }
+
         #endregion
     }
 }

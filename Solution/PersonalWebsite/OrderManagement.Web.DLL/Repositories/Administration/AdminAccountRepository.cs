@@ -34,8 +34,8 @@ namespace OrderManagement.Web.DLL
             using (var OrderManagementDataContext = new OrderManagementDatabaseEntities())
             {
                 return (from admin in OrderManagementDataContext.tblEmployees
-                        where admin.MobileNo == tblEmployeeDTO.MobileNo
-                              && admin.Password == admin.Password
+                        where string.Compare(admin.MobileNo, tblEmployeeDTO.MobileNo, StringComparison.CurrentCultureIgnoreCase) == 0
+                              && string.Compare(admin.Password, tblEmployeeDTO.Password, StringComparison.CurrentCultureIgnoreCase) == 0
                         select new tblEmployeeDTO()
                         {
                             EmployeeId = admin.EmployeeId,
@@ -75,7 +75,7 @@ namespace OrderManagement.Web.DLL
                     tblEmployee.IsPrimary = true;
                     tblEmployee.CreationOn = tblOrganizationDTO.CreationOn;
                     tblEmployee.IsActive = true;
-                    tblEmployee.IsActive = false;
+                    tblEmployee.IsDeleted = false;
                     OrderManagementDataContext.tblEmployees.Add(tblEmployee);
                 }
                 else
@@ -116,6 +116,22 @@ namespace OrderManagement.Web.DLL
             {
                 return OrderManagementDataContext.tblEmployees
                                         .Where(employee => string.Compare(employee.MobileNo, mobileNo, StringComparison.CurrentCultureIgnoreCase) == 0 && employee.IsDeleted == false)
+                                        .ToList()
+                                        .Count() > 0;
+            }
+        }
+
+        /// <summary>
+        /// Check is organization name is already exists
+        /// </summary>
+        /// <param name="mobileNo"></param>
+        /// <returns></returns>
+        public bool IsOrganizationExists(string organizationName)
+        {
+            using (var OrderManagementDataContext = new OrderManagementDatabaseEntities())
+            {
+                return OrderManagementDataContext.tblOrganizations
+                                        .Where(employee => string.Compare(employee.OrganizationName, organizationName, StringComparison.CurrentCultureIgnoreCase) == 0)
                                         .ToList()
                                         .Count() > 0;
             }

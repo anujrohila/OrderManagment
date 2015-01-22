@@ -88,30 +88,24 @@ namespace OrderManagement.Web.UI.Controllers.Admin
         {
             if (ModelState.IsValid)
             {
+                tblOrganizationDTOModel = CheckRegistrationValidation(tblOrganizationDTOModel);
                 //Convert login model to admin login dto
-                if (adminAccountBusinessLogic.IsMobileNoExists(tblOrganizationDTOModel.MobileNo) == false)
+                tblOrganizationDTOModel.CreationOn = DateTime.Now;
+                tblOrganizationDTOModel.CityId = 1;
+                tblOrganizationDTOModel.IsActive = true;
+                tblOrganizationDTOModel.IsWorkingStatus = true;
+                tblOrganizationDTOModel.IsWorkingStatusMessge = OrderManagementResource.lblAvailable;
+                tblOrganizationDTOModel.Password = DateTime.Now.ToString("ssfff").Substring(0, 4);
+                var registerResult = adminAccountBusinessLogic.Register(tblOrganizationDTOModel);
+                if (registerResult > 0)
                 {
-                    tblOrganizationDTOModel.CreationOn = DateTime.Now;
-                    tblOrganizationDTOModel.CityId = 1;
-                    tblOrganizationDTOModel.IsActive = true;
-                    tblOrganizationDTOModel.IsWorkingStatus = true;
-                    tblOrganizationDTOModel.IsWorkingStatusMessge = OrderManagementResource.lblAvailable;
-                    var registerResult = adminAccountBusinessLogic.Register(tblOrganizationDTOModel);
-                    if (registerResult > 0)
-                    {
-                        SmsQueueBusinessLogic.Add(new tblSMSQueueDTO { MobileNo = tblOrganizationDTOModel.MobileNo, Message = "Register successsfully." });
-                        return RedirectToAction("Login", "Account");
-                    }
-                    else
-                    {
-                        tblOrganizationDTOModel.ModelMessage.Add(new ModelMessage { Code = 1, Message = OrderManagementResource.msgIncorrectUserNameAndPassword, Type = MessageType.Error });
-                    }
+                    SmsQueueBusinessLogic.Add(new tblSMSQueueDTO { MobileNo = tblOrganizationDTOModel.MobileNo, Message = "Register successsfully. your password is : " + tblOrganizationDTOModel.Password });
+                    return RedirectToAction("Login", "Account");
                 }
                 else
                 {
-                    tblOrganizationDTOModel.ModelMessage.Add(new ModelMessage { Code = 1, Message = OrderManagementResource.msgMobileNoExists, Type = MessageType.Error });
+                    tblOrganizationDTOModel.ModelMessage.Add(new ModelMessage { Code = 1, Message = OrderManagementResource.msgIncorrectUserNameAndPassword, Type = MessageType.Error });
                 }
-                
                 return View(tblOrganizationDTOModel);
             }
             else
@@ -136,6 +130,24 @@ namespace OrderManagement.Web.UI.Controllers.Admin
         #endregion
 
         #region [Method]
+
+        private tblOrganizationDTO CheckRegistrationValidation(tblOrganizationDTO tblOrganizationDTOModel)
+        {
+            if (adminAccountBusinessLogic.IsMobileNoExists(tblOrganizationDTOModel.MobileNo) == true)
+            {
+                tblOrganizationDTOModel.ModelMessage.Add(new ModelMessage { Code = 1, Message = OrderManagementResource.msgMobileNoExists, Type = MessageType.Error });
+                ModelState.AddModelError("MobileNo", OrderManagementResource.msgMobileNoExists);
+            }
+            else
+            {
+                if (adminAccountBusinessLogic.IsOrganizationExists(tblOrganizationDTOModel.OrganizationName) == true)
+                {
+                    tblOrganizationDTOModel.ModelMessage.Add(new ModelMessage { Code = 1, Message = OrderManagementResource.msgOrganizationNameExists, Type = MessageType.Error });
+                    ModelState.AddModelError("OrganizationName", OrderManagementResource.msgOrganizationNameExists);
+                }
+            }
+            return tblOrganizationDTOModel;
+        }
 
         #endregion
 

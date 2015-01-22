@@ -349,7 +349,7 @@ namespace OrderManagement.Web.Domain.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to User Name.
+        ///   Looks up a localized string similar to User Name \ Mobile No.
         /// </summary>
         public static string lblUserName {
             get {
@@ -399,6 +399,15 @@ namespace OrderManagement.Web.Domain.Resources {
         public static string msgMobileNoExists {
             get {
                 return ResourceManager.GetString("msgMobileNoExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Organization name already register with us..
+        /// </summary>
+        public static string msgOrganizationNameExists {
+            get {
+                return ResourceManager.GetString("msgOrganizationNameExists", resourceCulture);
             }
         }
         

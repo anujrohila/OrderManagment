@@ -166,7 +166,7 @@
     <value>Submit</value>
   </data>
   <data name="lblUserName" xml:space="preserve">
-    <value>User Name</value>
+    <value>User Name \ Mobile No</value>
   </data>
   <data name="btnSaveAndClose" xml:space="preserve">
     <value>Save &amp; close</value>
@@ -332,5 +332,8 @@
   </data>
   <data name="msgRegisterSuccess" xml:space="preserve">
     <value>You are register successfully with us. Login your self and get benift with us.</value>
+  </data>
+  <data name="msgOrganizationNameExists" xml:space="preserve">
+    <value>Organization name already register with us.</value>
   </data>
 </root>
