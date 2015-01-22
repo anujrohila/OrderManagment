@@ -19,7 +19,7 @@ namespace OrderManagement.Web.UI
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 namespaces: new[] { "OrderManagement.Web.UI.Controllers.Admin" },
-                defaults: new { controller = "AdminAccount", action = "Login", id = UrlParameter.Optional }
+                defaults: new { controller = "Account", action = "Login", id = UrlParameter.Optional }
             );
         }
     }

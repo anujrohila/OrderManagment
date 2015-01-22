@@ -151,6 +151,15 @@ namespace OrderManagement.Web.Domain.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Create Account.
+        /// </summary>
+        public static string lblCreateAccount {
+            get {
+                return ResourceManager.GetString("lblCreateAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Creation Datetime.
         /// </summary>
         public static string lblCreationDate {
@@ -192,6 +201,15 @@ namespace OrderManagement.Web.Domain.Resources {
         public static string lblFirstName {
             get {
                 return ResourceManager.GetString("lblFirstName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Forgot Password.
+        /// </summary>
+        public static string lblForgotPassword {
+            get {
+                return ResourceManager.GetString("lblForgotPassword", resourceCulture);
             }
         }
         

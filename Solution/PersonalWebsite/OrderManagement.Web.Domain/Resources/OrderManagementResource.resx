@@ -306,4 +306,10 @@
   <data name="lblAvailable" xml:space="preserve">
     <value>Available</value>
   </data>
+  <data name="lblCreateAccount" xml:space="preserve">
+    <value>Create Account</value>
+  </data>
+  <data name="lblForgotPassword" xml:space="preserve">
+    <value>Forgot Password</value>
+  </data>
 </root>
