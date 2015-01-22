@@ -9,7 +9,7 @@ using OrderManagement.Web.BLL;
 
 namespace OrderManagement.Web.UI.Controllers.Admin
 {
-    public class AccountController : Controller
+    public class AdminAccountController : Controller
     {
         #region [Deceleration]
 
@@ -19,7 +19,7 @@ namespace OrderManagement.Web.UI.Controllers.Admin
 
         #region [Coustructor]
 
-        public AccountController()
+        public AdminAccountController()
         {
             adminAccountBusinessLogic = new AdminAccountBusinessLogic();
         }
@@ -88,10 +88,11 @@ namespace OrderManagement.Web.UI.Controllers.Admin
                 tblOrganizationDTOModel.CityId = 1;
                 tblOrganizationDTOModel.IsActive = true;
                 var registerResult = adminAccountBusinessLogic.Register(tblOrganizationDTOModel);
-                if (registerResult > 0)
+                if (registerResult != null)
                 {
-                    SmsQueueBusinessLogic.Add(new tblSMSQueueDTO { MobileNo = tblOrganizationDTOModel.MobileNo, Message = "Register successsfully." });
-                    return RedirectToAction("Login", "Account");
+                    Session["AdminId"] = registerResult;
+                    Session.Timeout = 20;
+                    return RedirectToAction("Index", "AdminHome");
                 }
                 else
                 {
@@ -103,14 +104,8 @@ namespace OrderManagement.Web.UI.Controllers.Admin
             {
                 return View(tblOrganizationDTOModel);
             }
-        }
 
-        [HttpGet]
-        public ActionResult ForgotPassword()
-        {
-            return View();
         }
-
 
         #endregion
 
