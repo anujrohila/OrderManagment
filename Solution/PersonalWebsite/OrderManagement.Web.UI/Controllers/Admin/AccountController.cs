@@ -89,29 +89,28 @@ namespace OrderManagement.Web.UI.Controllers.Admin
             if (ModelState.IsValid)
             {
                 tblOrganizationDTOModel = CheckRegistrationValidation(tblOrganizationDTOModel);
-                //Convert login model to admin login dto
-                tblOrganizationDTOModel.CreationOn = DateTime.Now;
-                tblOrganizationDTOModel.CityId = 1;
-                tblOrganizationDTOModel.IsActive = true;
-                tblOrganizationDTOModel.IsWorkingStatus = true;
-                tblOrganizationDTOModel.IsWorkingStatusMessge = OrderManagementResource.lblAvailable;
-                tblOrganizationDTOModel.Password = DateTime.Now.ToString("ssfff").Substring(0, 4);
-                var registerResult = adminAccountBusinessLogic.Register(tblOrganizationDTOModel);
-                if (registerResult > 0)
+                if (ModelState.IsValid)
                 {
-                    SmsQueueBusinessLogic.Add(new tblSMSQueueDTO { MobileNo = tblOrganizationDTOModel.MobileNo, Message = "Register successsfully. your password is : " + tblOrganizationDTOModel.Password });
-                    return RedirectToAction("Login", "Account");
+                    //Convert login model to admin login dto
+                    tblOrganizationDTOModel.CreationOn = DateTime.Now;
+                    tblOrganizationDTOModel.CityId = 1;
+                    tblOrganizationDTOModel.IsActive = true;
+                    tblOrganizationDTOModel.IsWorkingStatus = true;
+                    tblOrganizationDTOModel.IsWorkingStatusMessge = OrderManagementResource.lblAvailable;
+                    tblOrganizationDTOModel.Password = DateTime.Now.ToString("ssfff").Substring(0, 4);
+                    var registerResult = adminAccountBusinessLogic.Register(tblOrganizationDTOModel);
+                    if (registerResult > 0)
+                    {
+                        SmsQueueBusinessLogic.Add(new tblSMSQueueDTO { MobileNo = tblOrganizationDTOModel.MobileNo, Message = "Register successsfully. your password is : " + tblOrganizationDTOModel.Password });
+                        return RedirectToAction("Login", "Account");
+                    }
+                    else
+                    {
+                        tblOrganizationDTOModel.ModelMessage.Add(new ModelMessage { Code = 1, Message = OrderManagementResource.msgTryagainLater, Type = MessageType.Error });
+                    }
                 }
-                else
-                {
-                    tblOrganizationDTOModel.ModelMessage.Add(new ModelMessage { Code = 1, Message = OrderManagementResource.msgIncorrectUserNameAndPassword, Type = MessageType.Error });
-                }
-                return View(tblOrganizationDTOModel);
             }
-            else
-            {
-                return View(tblOrganizationDTOModel);
-            }
+            return View(tblOrganizationDTOModel);
         }
 
         [HttpGet]

@@ -421,6 +421,15 @@ namespace OrderManagement.Web.Domain.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Somthing went wrong please try again later..
+        /// </summary>
+        public static string msgTryagainLater {
+            get {
+                return ResourceManager.GetString("msgTryagainLater", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please enter must be 10 characters number..
         /// </summary>
         public static string validationMobileNo {

@@ -336,4 +336,7 @@
   <data name="msgOrganizationNameExists" xml:space="preserve">
     <value>Organization name already register with us.</value>
   </data>
+  <data name="msgTryagainLater" xml:space="preserve">
+    <value>Somthing went wrong please try again later.</value>
+  </data>
 </root>
