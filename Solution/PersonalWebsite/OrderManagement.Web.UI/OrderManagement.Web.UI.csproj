@@ -623,7 +623,7 @@
     <Content Include="Content\Images\Shared\favicon.ico" />
     <Content Include="Content\Images\Shared\fls-logo.png" />
     <Content Include="Content\Scripts\Administrator\AccessLogs.js" />
-    <Content Include="Content\Scripts\Administrator\Category.js" />
+    <Content Include="Content\Scripts\Administrator\Employee.js" />
     <Content Include="Content\Scripts\Administrator\Login.js" />
     <Content Include="Content\Scripts\Shared\Common.js" />
     <Content Include="Content\Scripts\Shared\Common.min.js" />

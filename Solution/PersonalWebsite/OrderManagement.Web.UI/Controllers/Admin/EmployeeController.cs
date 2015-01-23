@@ -34,6 +34,16 @@ namespace OrderManagement.Web.UI.Controllers.Admin
             return View();
         }
 
+        /// <summary>
+        /// Get All Employee List
+        /// </summary>
+        /// <returns></returns>
+        public PartialViewResult _PartialEmployeeList()
+        {
+            var employeeList = employeeBusinessLogic.GetAllEmployee(1);
+            return PartialView(employeeList);
+        }
+
         #endregion
 
         #region [Method]
