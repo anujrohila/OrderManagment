@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\Administration\AdminAccountRepository.cs" />
+    <Compile Include="Repositories\Administration\EmployeeRepository.cs" />
     <Compile Include="Repositories\Administration\SmsQueueRepository.cs" />
   </ItemGroup>
   <ItemGroup>
