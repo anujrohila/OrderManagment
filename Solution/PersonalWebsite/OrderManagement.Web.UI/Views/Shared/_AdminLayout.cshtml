@@ -7,246 +7,344 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>@OrderManagementResource.lblProjectTitle</title>
-    <meta name="description" content="" />
-    <meta name="keywords" content="" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel='icon' href="@Url.Content("~/Contents/Images/Shared/favicon.ico")" type='image/x-icon'>
-    <link rel='shortcut icon' href="@Url.Content("~/Contents/Images/Shared/favicon.ico")" type='image/x-icon'>
-
-    <style type="text/css">
-        body {
-            padding-bottom: 40px;
-        }
-
-        .sidebar-nav {
-            padding: 9px 0;
-        }
-    </style>
-    @Html.Style("~/css/bootstrap-cerulean.css")
-    @Html.Style("~/css/bootstrap-responsive.css")
-    @Html.Style("~/css/charisma-app.css")
-    @Html.Style("~/css/jquery-ui-1.8.21.custom.css")
-    @Html.Style("~/css/fullcalendar.css")
-    @Html.Style("~/css/fullcalendar.print.css")
-    @*<link href='css/fullcalendar.print.css' rel='stylesheet' media='print'>*@
-    @Html.Style("~/css/chosen.css")
-    @Html.Style("~/css/uniform.default.css")
-    @Html.Style("~/css/colorbox.css")
-    @Html.Style("~/css/jquery.cleditor.css")
-    @Html.Style("~/css/jquery.noty.css")
-    @Html.Style("~/css/noty_theme_default.css")
-    @Html.Style("~/css/elfinder.min.css")
-    @Html.Style("~/css/elfinder.theme.css")
-    @Html.Style("~/css/jquery.iphone.toggle.css")
-    @Html.Style("~/css/opa-icons.css")
-    @Html.Style("~/css/uploadify.css")
-
-
     @RenderSection("Head", false)
-
-
-    <script type="text/javascript" src="~/Content/Scripts/Shared/jquery-1.8.1.min.js"></script>
-    <script type="text/javascript" src="~/Content/Scripts/Shared/jquery.validate.js"></script>
-    <script type="text/javascript" src="~/Content/Scripts/Shared/jquery.validate.unobtrusive.js"></script>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    @Html.Style("~/plugins/bootstrap/bootstrap.css")
+    @Html.Style("~/plugins/jquery-ui/jquery-ui.min.css")
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Righteous' rel='stylesheet' type='text/css'>
+    @Html.Style("~/plugins/fancybox/jquery.fancybox.css")
+    @Html.Style("~/plugins/fullcalendar/fullcalendar.css")
+    @Html.Style("~/plugins/xcharts/xcharts.min.css")
+    @Html.Style("~/plugins/select2/select2.css")
+    @Html.Style("~/css/style.css")
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+				<script src="http://getbootstrap.com/docs-assets/js/html5shiv.js"></script>
+				<script src="http://getbootstrap.com/docs-assets/js/respond.min.js"></script>
+		<![endif]-->
+    @Html.Script("~/Content/Scripts/Shared/jquery-1.8.1.min.js")
+    @Html.Script("~/Content/Scripts/Shared/jquery.validate.js")
+    @Html.Script("~/Content/Scripts/Shared/jquery.validate.unobtrusive.js")
 </head>
 <body>
     @Html.Hidden("urlprefix", OrderManagement.Web.Domain.OrderManagementApplicationWebUI.WebUrlPrefix)
-    <!-- topbar starts -->
-    <div class="navbar">
-        <div class="navbar-inner">
-            <div class="container-fluid">
-                <a class="btn btn-navbar" data-toggle="collapse" data-target=".top-nav.nav-collapse,.sidebar-nav.nav-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </a>
-                <a class="brand" href="index.html">
-                    <img alt="Charisma Logo" src="img/logo20.png" />
-                    <span></span></a>
 
-                <!-- theme selector starts -->
-                <div class="btn-group pull-right theme-container">
-                    <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="icon-tint"></i><span class="hidden-phone">Change Theme / Skin</span>
-                        <span class="caret"></span>
+    <!--Start Header-->
+    <div id="screensaver">
+        <canvas id="canvas"></canvas>
+        <i class="fa fa-lock" id="screen_unlock"></i>
+    </div>
+    <div id="modalbox">
+        <div class="devoops-modal">
+            <div class="devoops-modal-header">
+                <div class="modal-header-name">
+                    <span>Basic table</span>
+                </div>
+                <div class="box-icons">
+                    <a class="close-link">
+                        <i class="fa fa-times"></i>
                     </a>
-                    <ul class="dropdown-menu" id="themes">
-                        <li><a data-value="classic" href="#"><i class="icon-blank"></i>Classic</a></li>
-                        <li><a data-value="cerulean" href="#"><i class="icon-blank"></i>Cerulean</a></li>
-                        <li><a data-value="cyborg" href="#"><i class="icon-blank"></i>Cyborg</a></li>
-                        <li><a data-value="redy" href="#"><i class="icon-blank"></i>Redy</a></li>
-                        <li><a data-value="journal" href="#"><i class="icon-blank"></i>Journal</a></li>
-                        <li><a data-value="simplex" href="#"><i class="icon-blank"></i>Simplex</a></li>
-                        <li><a data-value="slate" href="#"><i class="icon-blank"></i>Slate</a></li>
-                        <li><a data-value="spacelab" href="#"><i class="icon-blank"></i>Spacelab</a></li>
-                        <li><a data-value="united" href="#"><i class="icon-blank"></i>United</a></li>
-                    </ul>
                 </div>
-                <!-- theme selector ends -->
-
-                <!-- user dropdown starts -->
-                <div class="btn-group pull-right">
-                    <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="icon-user"></i><span class="hidden-phone">admin</span>
-                        <span class="caret"></span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Profile</a></li>
-                        <li class="divider"></li>
-                        <li><a href="login.html">Logout</a></li>
-                    </ul>
-                </div>
-                <!-- user dropdown ends -->
-
-                <div class="top-nav nav-collapse">
-                    <ul class="nav">
-                        <li><a href="#">Visit Site</a></li>
-                        <li>
-                            <form class="navbar-search pull-left">
-                                <input placeholder="Search" class="search-query span2" name="query" type="text">
-                            </form>
-                        </li>
-                    </ul>
-                </div>
-                <!--/.nav-collapse -->
+            </div>
+            <div class="devoops-modal-inner">
+            </div>
+            <div class="devoops-modal-bottom">
             </div>
         </div>
     </div>
-    <!-- topbar ends -->
-    <div class="container-fluid">
-        <div class="row-fluid">
-            <!-- left menu starts -->
-            <div class="span2 main-menu-span">
-                <div class="well nav-collapse sidebar-nav">
-                    <ul class="nav nav-tabs nav-stacked main-menu">
-                        <li class="nav-header hidden-tablet">Main</li>
-                        <li><a class="ajax-link" href="~/AdminHome/Index"><i class="icon-home"></i><span class="hidden-tablet">Dashboard</span></a></li>
-                        <li><a class="ajax-link" href="~/AdminCategory/Index"><i class="icon-eye-open"></i><span class="hidden-tablet">Category</span></a></li>
-                    </ul>
+    <header class="navbar">
+        <div class="container-fluid expanded-panel">
+            <div class="row">
+                <div id="logo" class="col-xs-12 col-sm-2">
+                    <a href="index.html">DevOOPS</a>
                 </div>
-                <!--/.well -->
-            </div>
-            <!--/span-->
-            <!-- left menu ends -->
-
-            <noscript>
-                <div class="alert alert-block span10">
-                    <h4 class="alert-heading">Warning!</h4>
-                    <p>You need to have <a href="http://en.wikipedia.org/wiki/JavaScript" target="_blank">JavaScript</a> enabled to use this site.</p>
+                <div id="top-panel" class="col-xs-12 col-sm-10">
+                    <div class="row">
+                        <div class="col-xs-8 col-sm-4">
+                            <a href="#" class="show-sidebar">
+                                <i class="fa fa-bars"></i>
+                            </a>
+                            <div id="search">
+                                <input type="text" placeholder="search" />
+                                <i class="fa fa-search"></i>
+                            </div>
+                        </div>
+                        <div class="col-xs-4 col-sm-8 top-panel-right">
+                            <ul class="nav navbar-nav pull-right panel-menu">
+                                <li class="hidden-xs">
+                                    <a href="index.html" class="modal-link">
+                                        <i class="fa fa-bell"></i>
+                                        <span class="badge">7</span>
+                                    </a>
+                                </li>
+                                <li class="hidden-xs">
+                                    <a class="ajax-link" href="ajax/calendar.html">
+                                        <i class="fa fa-calendar"></i>
+                                        <span class="badge">7</span>
+                                    </a>
+                                </li>
+                                <li class="hidden-xs">
+                                    <a href="ajax/page_messages.html" class="ajax-link">
+                                        <i class="fa fa-envelope"></i>
+                                        <span class="badge">7</span>
+                                    </a>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle account" data-toggle="dropdown">
+                                        <div class="avatar">
+                                            <img src="img/avatar.jpg" class="img-rounded" alt="avatar" />
+                                        </div>
+                                        <i class="fa fa-angle-down pull-right"></i>
+                                        <div class="user-mini pull-right">
+                                            <span class="welcome">Welcome,</span>
+                                            <span>Jane Devoops</span>
+                                        </div>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a href="#">
+                                                <i class="fa fa-user"></i>
+                                                <span>Profile</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="ajax/page_messages.html" class="ajax-link">
+                                                <i class="fa fa-envelope"></i>
+                                                <span>Messages</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="ajax/gallery_simple.html" class="ajax-link">
+                                                <i class="fa fa-picture-o"></i>
+                                                <span>Albums</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="ajax/calendar.html" class="ajax-link">
+                                                <i class="fa fa-tasks"></i>
+                                                <span>Tasks</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fa fa-cog"></i>
+                                                <span>Settings</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fa fa-power-off"></i>
+                                                <span>Logout</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-            </noscript>
-
-            <div id="content" class="span10">
-                <!-- content starts -->
-                @RenderSection("featured", required: false)
-                @RenderBody()
-                <!-- content ends -->
-            </div>
-            <!--/#content.span10-->
-        </div>
-        <!--/fluid-row-->
-
-        <hr>
-
-        <div class="modal hide fade" id="myModal">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">×</button>
-                <h3>Settings</h3>
-            </div>
-            <div class="modal-body">
-                <p>Here settings can be configured...</p>
-            </div>
-            <div class="modal-footer">
-                <a href="#" class="btn" data-dismiss="modal">Close</a>
-                <a href="#" class="btn btn-primary">Save changes</a>
             </div>
         </div>
-
-        <footer>
-            <p class="pull-left">&copy; <a href="http://usman.it" target="_blank">Muhammad Usman</a> 2012</p>
-            <p class="pull-right">Powered by: <a href="http://usman.it/free-responsive-admin-template">Charisma</a></p>
-        </footer>
-
+    </header>
+    <!--End Header-->
+    <!--Start Container-->
+    <div id="main" class="container-fluid">
+        <div class="row">
+            <div id="sidebar-left" class="col-xs-2 col-sm-2">
+                <ul class="nav main-menu">
+                    <li>
+                        <a href="ajax/dashboard.html" class="active ajax-link">
+                            <i class="fa fa-dashboard"></i>
+                            <span class="hidden-xs">Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle">
+                            <i class="fa fa-bar-chart-o"></i>
+                            <span class="hidden-xs">Charts</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="ajax-link" href="ajax/charts_xcharts.html">xCharts</a></li>
+                            <li><a class="ajax-link" href="ajax/charts_flot.html">Flot Charts</a></li>
+                            <li><a class="ajax-link" href="ajax/charts_google.html">Google Charts</a></li>
+                            <li><a class="ajax-link" href="ajax/charts_morris.html">Morris Charts</a></li>
+                            <li><a class="ajax-link" href="ajax/charts_coindesk.html">CoinDesk realtime</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle">
+                            <i class="fa fa-table"></i>
+                            <span class="hidden-xs">Tables</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="ajax-link" href="ajax/tables_simple.html">Simple Tables</a></li>
+                            <li><a class="ajax-link" href="ajax/tables_datatables.html">Data Tables</a></li>
+                            <li><a class="ajax-link" href="ajax/tables_beauty.html">Beauty Tables</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle">
+                            <i class="fa fa-pencil-square-o"></i>
+                            <span class="hidden-xs">Forms</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="ajax-link" href="ajax/forms_elements.html">Elements</a></li>
+                            <li><a class="ajax-link" href="ajax/forms_layouts.html">Layouts</a></li>
+                            <li><a class="ajax-link" href="ajax/forms_file_uploader.html">File Uploader</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle">
+                            <i class="fa fa-desktop"></i>
+                            <span class="hidden-xs">UI Elements</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="ajax-link" href="ajax/ui_grid.html">Grid</a></li>
+                            <li><a class="ajax-link" href="ajax/ui_buttons.html">Buttons</a></li>
+                            <li><a class="ajax-link" href="ajax/ui_progressbars.html">Progress Bars</a></li>
+                            <li><a class="ajax-link" href="ajax/ui_jquery-ui.html">Jquery UI</a></li>
+                            <li><a class="ajax-link" href="ajax/ui_icons.html">Icons</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle">
+                            <i class="fa fa-list"></i>
+                            <span class="hidden-xs">Pages</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="ajax/page_login.html">Login</a></li>
+                            <li><a href="ajax/page_register.html">Register</a></li>
+                            <li><a id="locked-screen" class="submenu" href="ajax/page_locked.html">Locked Screen</a></li>
+                            <li><a class="ajax-link" href="ajax/page_contacts.html">Contacts</a></li>
+                            <li><a class="ajax-link" href="ajax/page_feed.html">Feed</a></li>
+                            <li><a class="ajax-link add-full" href="ajax/page_messages.html">Messages</a></li>
+                            <li><a class="ajax-link" href="ajax/page_pricing.html">Pricing</a></li>
+                            <li><a class="ajax-link" href="ajax/page_invoice.html">Invoice</a></li>
+                            <li><a class="ajax-link" href="ajax/page_search.html">Search Results</a></li>
+                            <li><a class="ajax-link" href="ajax/page_404.html">Error 404</a></li>
+                            <li><a href="ajax/page_500.html">Error 500</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle">
+                            <i class="fa fa-map-marker"></i>
+                            <span class="hidden-xs">Maps</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="ajax-link" href="ajax/maps.html">OpenStreetMap</a></li>
+                            <li><a class="ajax-link" href="ajax/map_fullscreen.html">Fullscreen map</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle">
+                            <i class="fa fa-picture-o"></i>
+                            <span class="hidden-xs">Gallery</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="ajax-link" href="ajax/gallery_simple.html">Simple Gallery</a></li>
+                            <li><a class="ajax-link" href="ajax/gallery_flickr.html">Flickr Gallery</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a class="ajax-link" href="ajax/typography.html">
+                            <i class="fa fa-font"></i>
+                            <span class="hidden-xs">Typography</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="ajax-link" href="ajax/calendar.html">
+                            <i class="fa fa-calendar"></i>
+                            <span class="hidden-xs">Calendar</span>
+                        </a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle">
+                            <i class="fa fa-picture-o"></i>
+                            <span class="hidden-xs">Multilevel menu</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">First level menu</a></li>
+                            <li><a href="#">First level menu</a></li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle">
+                                    <i class="fa fa-plus-square"></i>
+                                    <span class="hidden-xs">Second level menu group</span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Second level menu</a></li>
+                                    <li><a href="#">Second level menu</a></li>
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle">
+                                            <i class="fa fa-plus-square"></i>
+                                            <span class="hidden-xs">Three level menu group</span>
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="#">Three level menu</a></li>
+                                            <li><a href="#">Three level menu</a></li>
+                                            <li class="dropdown">
+                                                <a href="#" class="dropdown-toggle">
+                                                    <i class="fa fa-plus-square"></i>
+                                                    <span class="hidden-xs">Four level menu group</span>
+                                                </a>
+                                                <ul class="dropdown-menu">
+                                                    <li><a href="#">Four level menu</a></li>
+                                                    <li><a href="#">Four level menu</a></li>
+                                                    <li class="dropdown">
+                                                        <a href="#" class="dropdown-toggle">
+                                                            <i class="fa fa-plus-square"></i>
+                                                            <span class="hidden-xs">Five level menu group</span>
+                                                        </a>
+                                                        <ul class="dropdown-menu">
+                                                            <li><a href="#">Five level menu</a></li>
+                                                            <li><a href="#">Five level menu</a></li>
+                                                            <li class="dropdown">
+                                                                <a href="#" class="dropdown-toggle">
+                                                                    <i class="fa fa-plus-square"></i>
+                                                                    <span class="hidden-xs">Six level menu group</span>
+                                                                </a>
+                                                                <ul class="dropdown-menu">
+                                                                    <li><a href="#">Six level menu</a></li>
+                                                                    <li><a href="#">Six level menu</a></li>
+                                                                </ul>
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li><a href="#">Three level menu</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <!--Start Content-->
+            <div id="content" class="col-xs-12 col-sm-10">
+                <div class="preloader">
+                    <img src="img/devoops_getdata.gif" class="devoops-getdata" alt="preloader" />
+                </div>
+                <div id="ajax-content">
+                    @RenderSection("featured", required: false)
+                    @RenderBody()
+                </div>
+            </div>
+            <!--End Content-->
+        </div>
     </div>
+    <!--End Container-->
 
-
-
-
-    <!-- external javascript
-	================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-
-    <!-- jQuery -->
-    @Html.Script("~/js/jquery-1.7.2.min.js")
-    <!-- jQuery UI -->
-    @Html.Script("~/js/jquery-ui-1.8.21.custom.min.js")
-    <!-- transition / effect library -->
-    @Html.Script("~/js/bootstrap-transition.js")
-    <!-- alert enhancer library -->
-    @Html.Script("~/js/bootstrap-alert.js")
-    <!-- modal / dialog library -->
-    @Html.Script("~/js/bootstrap-modal.js")
-    <!-- custom dropdown library -->
-    @Html.Script("~/js/bootstrap-dropdown.js")
-    <!-- scrolspy library -->
-    @Html.Script("~/js/bootstrap-scrollspy.js")
-    <!-- library for creating tabs -->
-    @Html.Script("~/js/bootstrap-tab.js")
-    <!-- library for advanced tooltip -->
-    @Html.Script("~/js/bootstrap-tooltip.js")
-    <!-- popover effect library -->
-    @Html.Script("~/js/bootstrap-popover.js")
-    <!-- button enhancer library -->
-    @Html.Script("~/js/bootstrap-button.js")
-    <!-- accordion library (optional, not used in demo) -->
-    @Html.Script("~/js/bootstrap-collapse.js")
-    <!-- carousel slideshow library (optional, not used in demo) -->
-    @Html.Script("~/js/bootstrap-carousel.js")
-    <!-- autocomplete library -->
-    @Html.Script("~/js/bootstrap-typeahead.js")
-    <!-- tour library -->
-    @Html.Script("~/js/bootstrap-tour.js")
-    <!-- library for cookie management -->
-    @Html.Script("~/js/jquery.cookie.js")
-    <!-- calander plugin -->
-    @Html.Script("~/js/fullcalendar.min.js")
-    <!-- data table plugin -->
-    @Html.Script("~/js/jquery.dataTables.min.js")
-
-    <!-- chart libraries start -->
-    @Html.Script("~/js/excanvas.js")
-    @Html.Script("~/js/jquery.flot.min.js")
-    @Html.Script("~/js/jquery.flot.pie.min.js")
-    @Html.Script("~/js/jquery.flot.stack.js")
-    @Html.Script("~/js/jquery.flot.resize.min.js")
-    <!-- chart libraries end -->
-
-    <!-- select or dropdown enhancer -->
-    @Html.Script("~/js/jquery.chosen.min.js")
-    <!-- checkbox, radio, and file input styler -->
-    @Html.Script("~/js/jquery.uniform.min.js")
-    <!-- plugin for gallery image view -->
-    @Html.Script("~/js/jquery.colorbox.min.js")
-    <!-- rich text editor library -->
-    @Html.Script("~/js/jquery.cleditor.min.js")
-    <!-- notification plugin -->
-    @Html.Script("~/js/jquery.noty.js")
-    <!-- file manager library -->
-    @Html.Script("~/js/jquery.elfinder.min.js")
-    <!-- star rating plugin -->
-    @Html.Script("~/js/jquery.raty.min.js")
-    <!-- for iOS style toggle switch -->
-    @Html.Script("~/js/jquery.iphone.toggle.js")
-    <!-- autogrowing textarea plugin -->
-    @Html.Script("~/js/jquery.autogrow-textarea.js")
-    <!-- multiple file upload plugin -->
-    @Html.Script("~/js/jquery.uploadify-3.1.min.js")
-    <!-- history.js for cross-browser state change on ajax -->
-    @Html.Script("~/js/jquery.history.js")
-    <!-- application script for Charisma demo -->
-    @Html.Script("~/js/charisma.js")
+    @Html.Script("~/plugins/jquery/jquery-2.1.0.min.js")
+    @Html.Script("~/plugins/jquery-ui/jquery-ui.min.js")
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    @Html.Script("~/plugins/bootstrap/bootstrap.min.js")
+    @Html.Script("~/plugins/justified-gallery/jquery.justifiedgallery.min.js")
+    @Html.Script("~/jplugins/tinymce/tinymce.min.js")
+    @Html.Script("~/plugins/tinymce/jquery.tinymce.min.js")
+    <!-- All functions for this theme + document.ready processing -->
+    @Html.Script("~/js/devoops.js")
     <script src="~/Base/OrderManagementResource" type="text/javascript"></script>
 </body>
 </html>
